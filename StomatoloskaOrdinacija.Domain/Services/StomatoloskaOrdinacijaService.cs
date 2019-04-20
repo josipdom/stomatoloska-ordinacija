@@ -33,6 +33,42 @@ namespace StomatoloskaOrdinacija.Domain.Services
             return pacijentList;
         }
 
+        public List<ZahvatDTO> GetPopisZahvata()
+        {
+            List<ZahvatDTO> zahvatList = new List<ZahvatDTO>();
+
+            List<Zahvat> zahvati = db.Zahvat.ToList();
+
+            StomatoloskaOrdinacijaMapper mapper = new StomatoloskaOrdinacijaMapper();
+            foreach (var zahvatDb in zahvati)
+            {
+                ZahvatDTO zahvatDTO = new ZahvatDTO();
+                mapper.MapZahvatDbToDTO(zahvatDTO, zahvatDb);
+
+                zahvatList.Add(zahvatDTO);
+            }
+
+            return zahvatList;
+        }
+
+        public List<NarudzbaDTO> GetPopisNarudzba()
+        {
+            List<NarudzbaDTO> narudzbaList = new List<NarudzbaDTO>();
+
+            List<Narudzba> narudzbe = db.Narudzba.ToList();
+
+            StomatoloskaOrdinacijaMapper mapper = new StomatoloskaOrdinacijaMapper();
+            foreach (var narudzbaDb in narudzbe)
+            {
+                NarudzbaDTO narudzbaDTO = new NarudzbaDTO();
+                mapper.MapNarudzbaDbToDTO(narudzbaDTO, narudzbaDb);
+
+                narudzbaList.Add(narudzbaDTO);
+            }
+
+            return narudzbaList;
+        }
+
 
     }
 }

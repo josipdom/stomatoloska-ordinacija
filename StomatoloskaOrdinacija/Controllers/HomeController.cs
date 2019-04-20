@@ -7,6 +7,7 @@ using System.Web.Mvc;
 
 namespace StomatoloskaOrdinacija.Controllers
 {
+    [Authorize]
     public class HomeController : Controller
     {
         public ActionResult Index()
@@ -33,7 +34,7 @@ namespace StomatoloskaOrdinacija.Controllers
             StomatoloskaOrdinacijaService service = new StomatoloskaOrdinacijaService();
             var res = service.GetPopisPacijenata();
 
-            return View();
+            return View(res);
         }
 
 
