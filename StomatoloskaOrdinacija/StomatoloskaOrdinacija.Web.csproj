@@ -258,6 +258,16 @@
     <Content Include="Scripts\jquery-3.3.1.slim.min.map" />
     <Content Include="Scripts\jquery-3.3.1.min.map" />
   </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\StomatoloskaOrdinacija.DAL\StomatoloskaOrdinacija.DAL.csproj">
+      <Project>{d5f63186-e99f-4d4a-a655-c6402f1a4c5b}</Project>
+      <Name>StomatoloskaOrdinacija.DAL</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\StomatoloskaOrdinacija.Domain\StomatoloskaOrdinacija.Domain.csproj">
+      <Project>{E4C61BAC-6C21-4535-A469-39A9714D4E38}</Project>
+      <Name>StomatoloskaOrdinacija.Domain</Name>
+    </ProjectReference>
+  </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
     <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>

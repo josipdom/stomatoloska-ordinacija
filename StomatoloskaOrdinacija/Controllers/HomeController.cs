@@ -1,4 +1,5 @@
-﻿using System;
+﻿using StomatoloskaOrdinacija.Domain.Services;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -26,5 +27,15 @@ namespace StomatoloskaOrdinacija.Controllers
 
             return View();
         }
+
+        public ActionResult Test()
+        {
+            StomatoloskaOrdinacijaService service = new StomatoloskaOrdinacijaService();
+            var res = service.GetPopisPacijenata();
+
+            return View();
+        }
+
+
     }
 }
