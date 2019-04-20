@@ -11,32 +11,6 @@ namespace StomatoloskaOrdinacija.Domain.Mappers
 {
     public class StomatoloskaOrdinacijaMapper
     {
-        public PacijentDTO MapPacijentDbToDTO(PacijentDTO pacijentDTO, Pacijent pacijentDb)
-        {
-            pacijentDTO.ID = pacijentDb.ID;
-            pacijentDTO.ImePacijenta = pacijentDb.ImePacijenta;
-            pacijentDTO.PrezimePacijenta = pacijentDb.PrezimePacijenta;
-            pacijentDTO.DatumRodjenja = pacijentDb.DatumRodjenja;
-            pacijentDTO.Telefon = pacijentDb.Telefon;
-            pacijentDTO.Adresa = pacijentDb.Adresa;
-            pacijentDTO.Zahvat = pacijentDb.Zahvat;
-
-            return pacijentDTO;
-        }
-
-        public NarudzbaDTO MapNarudzbaDbToDTO(NarudzbaDTO narudzbaDTO, Narudzba narudzbaDb)
-        {
-            narudzbaDTO.ID = narudzbaDb.ID;
-            narudzbaDTO.NazivNarudzbe = narudzbaDb.NazivNarudzbe;
-            narudzbaDTO.VrijemeOd = narudzbaDb.VrijemeOd;
-            narudzbaDTO.VrijemeDo = narudzbaDb.VrijemeDo;
-            narudzbaDTO.OpisNarudzbe = narudzbaDb.OpisNarudzbe;
-            narudzbaDTO.NazivPacijenta = narudzbaDb.NazivPacijenta;
-            narudzbaDTO.Dolazak = narudzbaDb.Dolazak;
-
-            return narudzbaDTO;
-        }
-
         public ZahvatDTO MapZahvatDbToDTO(ZahvatDTO zahvatDTO, Zahvat zahvatDb)
         {
             if (zahvatDTO.Sifra == (int)VrsteZahvataEnum.Pregled)
@@ -48,12 +22,79 @@ namespace StomatoloskaOrdinacija.Domain.Mappers
                 zahvatDTO.Cijena = zahvatDTO.Cijena;
             }
             zahvatDTO.ID = zahvatDTO.ID;
-            zahvatDTO.PacijentId = zahvatDTO.PacijentId;
+            zahvatDTO.PacijentID = zahvatDTO.PacijentID;
             zahvatDTO.Sifra = zahvatDTO.Sifra;
             zahvatDTO.Naziv = zahvatDTO.Naziv;
             zahvatDTO.Pacijent = zahvatDTO.Pacijent;
 
             return zahvatDTO;
         }
+
+        public PacijentDTO MapPacijentDbToDTO(PacijentDTO pacijentDTO, Pacijent pacijentDb)
+        {
+            pacijentDTO.ID = pacijentDb.ID;
+            pacijentDTO.Ime = pacijentDb.Ime;
+            pacijentDTO.Prezime = pacijentDb.Prezime;
+            pacijentDTO.DatumRodjenja = pacijentDb.DatumRodjenja;
+            pacijentDTO.Telefon = pacijentDb.Telefon;
+            pacijentDTO.Adresa = pacijentDb.Adresa;
+            pacijentDTO.Zahvat = pacijentDb.Zahvat;
+            pacijentDTO.Narudzba = pacijentDb.Narudzba;
+
+            return pacijentDTO;
+        }
+
+        public NarudzbaDTO MapNarudzbaDbToDTO(NarudzbaDTO narudzbaDTO, Narudzba narudzbaDb)
+        {
+            narudzbaDTO.ID = narudzbaDb.ID;
+            narudzbaDTO.Naziv = narudzbaDb.Naziv;
+            narudzbaDTO.VrijemeOd = narudzbaDb.VrijemeOd;
+            narudzbaDTO.VrijemeDo = narudzbaDb.VrijemeDo;
+            narudzbaDTO.Opis = narudzbaDb.Opis;
+            narudzbaDTO.PacijentID = narudzbaDb.PacijentID;
+            narudzbaDTO.Dolazak = narudzbaDb.Dolazak;
+            narudzbaDTO.Pacijent = narudzbaDb.Pacijent;
+
+            return narudzbaDTO;
+        }
+
+        public List<ZahvatDTO> MapZahvatDbToDTOList(List<ZahvatDTO> zahvatDTOList, List<Zahvat> zahvatDbList)
+        {
+            foreach (var zahvatDb in zahvatDbList)
+            {
+                ZahvatDTO zahvatDTO = new ZahvatDTO();
+                MapZahvatDbToDTO(zahvatDTO, zahvatDb);
+
+                zahvatDTOList.Add(zahvatDTO);
+            }
+
+            return zahvatDTOList;
+        }
+
+        public List<PacijentDTO> MapPacijentDbToDTOList(List<PacijentDTO> pacijentDTOList, List<Pacijent> pacijentDbList)
+        {
+            foreach (var pacijentDb in pacijentDbList)
+            {
+                PacijentDTO pacijentDTO = new PacijentDTO();
+                MapPacijentDbToDTO(pacijentDTO, pacijentDb);
+                pacijentDTOList.Add(pacijentDTO);
+            }
+
+            return pacijentDTOList;
+        }
+
+        public List<NarudzbaDTO> MapNarudzbaDbToDTOList(List<NarudzbaDTO> narudzbaDTOList, List<Narudzba> narudzbaDbList)
+        {
+            foreach (var narudzbaDb in narudzbaDbList)
+            {
+                NarudzbaDTO narudzbaDTO = new NarudzbaDTO();
+                MapNarudzbaDbToDTO(narudzbaDTO, narudzbaDb);
+                narudzbaDTOList.Add(narudzbaDTO);
+            }
+
+            return narudzbaDTOList;
+        }
+
+
     }
 }

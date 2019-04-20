@@ -11,21 +11,21 @@ namespace StomatoloskaOrdinacija.DAL
     {
         public int ID { get; set; }
 
+        [Required]
         [StringLength(100)]
-        public string NazivNarudzbe { get; set; }
+        public string Naziv { get; set; }
 
         public DateTime VrijemeOd { get; set; }
 
         public DateTime VrijemeDo { get; set; }
 
-        [Required]
         [StringLength(250)]
-        public string OpisNarudzbe { get; set; }
+        public string Opis { get; set; }
 
-        [Required]
-        [StringLength(100)]
-        public string NazivPacijenta { get; set; }
+        public int PacijentID { get; set; }
 
         public bool Dolazak { get; set; }
+
+        public virtual Pacijent Pacijent { get; set; }
     }
 }

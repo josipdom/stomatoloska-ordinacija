@@ -13,60 +13,39 @@ namespace StomatoloskaOrdinacija.Domain.Services
     public class StomatoloskaOrdinacijaService
     {
         OrdinacijaDb db = new OrdinacijaDb();
+        StomatoloskaOrdinacijaMapper mapper = new StomatoloskaOrdinacijaMapper();
+
         public List<PacijentDTO> GetPopisPacijenata()
         {
-            List<PacijentDTO> pacijentList = new List<PacijentDTO>();
+            List<PacijentDTO> pacijentDTOList = new List<PacijentDTO>();
 
             //zoveš bazu da ti vrati listu pacijenata db .ToList()
-            List<Pacijent> pacijents = db.Pacijent.ToList();
+            List<Pacijent> pacijentiDbList = db.Pacijent.ToList();
 
             //Zoveš Mapper da mapiraš listu Db objekata u listu DTO-oeva
-            StomatoloskaOrdinacijaMapper mapper = new StomatoloskaOrdinacijaMapper();
-            foreach (var pacijentDb in pacijents)
-            {
-                PacijentDTO pacijentDTO = new PacijentDTO();
-                mapper.MapPacijentDbToDTO(pacijentDTO, pacijentDb);
-
-                pacijentList.Add(pacijentDTO);
-            }
-
-            return pacijentList;
+            mapper.MapPacijentDbToDTOList(pacijentDTOList, pacijentiDbList);
+            
+            return pacijentDTOList;
         }
 
         public List<ZahvatDTO> GetPopisZahvata()
         {
-            List<ZahvatDTO> zahvatList = new List<ZahvatDTO>();
+            List<ZahvatDTO> zahvatDTOList = new List<ZahvatDTO>();
+            List<Zahvat> zahvatiDbList = db.Zahvat.ToList();
 
-            List<Zahvat> zahvati = db.Zahvat.ToList();
+            mapper.MapZahvatDbToDTOList(zahvatDTOList, zahvatiDbList);
 
-            StomatoloskaOrdinacijaMapper mapper = new StomatoloskaOrdinacijaMapper();
-            foreach (var zahvatDb in zahvati)
-            {
-                ZahvatDTO zahvatDTO = new ZahvatDTO();
-                mapper.MapZahvatDbToDTO(zahvatDTO, zahvatDb);
-
-                zahvatList.Add(zahvatDTO);
-            }
-
-            return zahvatList;
+            return zahvatDTOList;
         }
 
         public List<NarudzbaDTO> GetPopisNarudzba()
         {
-            List<NarudzbaDTO> narudzbaList = new List<NarudzbaDTO>();
+            List<NarudzbaDTO> narudzbaDTOList = new List<NarudzbaDTO>();
+            List<Narudzba> narudzbeDbList = db.Narudzba.ToList();
 
-            List<Narudzba> narudzbe = db.Narudzba.ToList();
+            mapper.MapNarudzbaDbToDTOList(narudzbaDTOList, narudzbeDbList);
 
-            StomatoloskaOrdinacijaMapper mapper = new StomatoloskaOrdinacijaMapper();
-            foreach (var narudzbaDb in narudzbe)
-            {
-                NarudzbaDTO narudzbaDTO = new NarudzbaDTO();
-                mapper.MapNarudzbaDbToDTO(narudzbaDTO, narudzbaDb);
-
-                narudzbaList.Add(narudzbaDTO);
-            }
-
-            return narudzbaList;
+            return narudzbaDTOList;
         }
 
 

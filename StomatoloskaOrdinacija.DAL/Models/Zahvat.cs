@@ -11,12 +11,12 @@ namespace StomatoloskaOrdinacija.DAL
     {
         public int ID { get; set; }
 
-        public int PacijentId { get; set; }
+        public int PacijentID { get; set; }
 
         public int Sifra { get; set; }
 
         [Required]
-        [StringLength(50)]
+        [StringLength(150)]
         public string Naziv { get; set; }
 
         public int Cijena { get; set; }

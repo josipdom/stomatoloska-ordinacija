@@ -28,15 +28,5 @@ namespace StomatoloskaOrdinacija.Controllers
 
             return View();
         }
-
-        public ActionResult Test()
-        {
-            StomatoloskaOrdinacijaService service = new StomatoloskaOrdinacijaService();
-            var res = service.GetPopisPacijenata();
-
-            return View(res);
-        }
-
-
     }
 }

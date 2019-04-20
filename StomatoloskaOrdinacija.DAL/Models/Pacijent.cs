@@ -12,6 +12,7 @@ namespace StomatoloskaOrdinacija.DAL
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public Pacijent()
         {
+            Narudzba = new HashSet<Narudzba>();
             Zahvat = new HashSet<Zahvat>();
         }
 
@@ -19,20 +20,23 @@ namespace StomatoloskaOrdinacija.DAL
 
         [Required]
         [StringLength(50)]
-        public string ImePacijenta { get; set; }
+        public string Ime { get; set; }
 
         [Required]
         [StringLength(50)]
-        public string PrezimePacijenta { get; set; }
+        public string Prezime { get; set; }
 
         public DateTime DatumRodjenja { get; set; }
 
         [Required]
-        [StringLength(15)]
+        [StringLength(50)]
         public string Telefon { get; set; }
 
-        [StringLength(100)]
+        [StringLength(150)]
         public string Adresa { get; set; }
+
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<Narudzba> Narudzba { get; set; }
 
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Zahvat> Zahvat { get; set; }
