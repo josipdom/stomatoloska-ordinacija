@@ -38,6 +38,7 @@
       <HintPath>..\StomatoloskaOrdinacija\bin\EntityFramework.SqlServer.dll</HintPath>
     </Reference>
     <Reference Include="System" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
@@ -47,6 +48,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Builders\StomatoloskaOrdinacijaDTOBuilder.cs" />
     <Compile Include="DTOs\NarudzbaDTO.cs" />
     <Compile Include="DTOs\PacijentDTO.cs" />
     <Compile Include="DTOs\ZahvatDTO.cs" />

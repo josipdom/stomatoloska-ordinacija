@@ -1,27 +1,45 @@
-﻿using StomatoloskaOrdinacija.Domain.Services;
-using System;
+﻿using System;
 using System.Collections.Generic;
+using System.Data;
+using System.Data.Entity;
 using System.Linq;
+using System.Net;
 using System.Web;
 using System.Web.Mvc;
+using StomatoloskaOrdinacija.DAL;
+using StomatoloskaOrdinacija.Domain.DTOs;
+using StomatoloskaOrdinacija.Domain.Services;
 
 namespace StomatoloskaOrdinacija.Controllers
 {
     public class PacijentiController : Controller
     {
+        private OrdinacijaDb db = new OrdinacijaDb();
+        StomatoloskaOrdinacijaService service = new StomatoloskaOrdinacijaService();
+
         // GET: Pacijenti
         public ActionResult Index()
         {
-            StomatoloskaOrdinacijaService service = new StomatoloskaOrdinacijaService();
             var res = service.GetPopisPacijenata();
-
             return View(res);
         }
 
         // GET: Pacijenti/Details/5
         public ActionResult Details(int id)
         {
-            return View();
+            if (id == 0)
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
+
+            PacijentDTO pacijentDTO = service.GetPacijentById(id);
+
+            if (pacijentDTO == null)
+            {
+                return HttpNotFound();
+            }
+
+            return View(pacijentDTO);
         }
 
         // GET: Pacijenti/Create
@@ -31,63 +49,90 @@ namespace StomatoloskaOrdinacija.Controllers
         }
 
         // POST: Pacijenti/Create
+        // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
+        // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
-        public ActionResult Create(FormCollection collection)
+        [ValidateAntiForgeryToken]
+        public ActionResult Create([Bind(Include = "ID,Ime,Prezime,DatumRodjenja,Telefon,Adresa")] PacijentDTO pacijentDTO)
         {
-            try
+            if (ModelState.IsValid)
             {
-                // TODO: Add insert logic here
+                service.CreateNewPacijent(pacijentDTO);
 
                 return RedirectToAction("Index");
             }
-            catch
-            {
-                return View();
-            }
+
+            return View(pacijentDTO);
         }
 
         // GET: Pacijenti/Edit/5
         public ActionResult Edit(int id)
         {
-            return View();
+            if (id == 0)
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
+
+            PacijentDTO pacijentDTO = service.GetPacijentById(id);
+
+            if (pacijentDTO == null)
+            {
+                return HttpNotFound();
+            }
+            return View(pacijentDTO);
         }
 
         // POST: Pacijenti/Edit/5
+        // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
+        // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
-        public ActionResult Edit(int id, FormCollection collection)
+        [ValidateAntiForgeryToken]
+        public ActionResult Edit([Bind(Include = "ID,Ime,Prezime,DatumRodjenja,Telefon,Adresa")] PacijentDTO pacijentDTO)
         {
-            try
+            if (ModelState.IsValid)
             {
-                // TODO: Add update logic here
+
+                service.EditPacijent(pacijentDTO);
 
                 return RedirectToAction("Index");
             }
-            catch
-            {
-                return View();
-            }
+            return View(pacijentDTO);
         }
 
         // GET: Pacijenti/Delete/5
         public ActionResult Delete(int id)
         {
-            return View();
+            if (id == 0)
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
+            PacijentDTO pacijentDTO = service.GetPacijentById(id);
+            if (pacijentDTO == null)
+            {
+                return HttpNotFound();
+            }
+            return View(pacijentDTO);
         }
 
         // POST: Pacijenti/Delete/5
-        [HttpPost]
-        public ActionResult Delete(int id, FormCollection collection)
+        [HttpPost, ActionName("Delete")]
+        [ValidateAntiForgeryToken]
+        public ActionResult DeleteConfirmed(int id)
         {
-            try
-            {
-                // TODO: Add delete logic here
+            PacijentDTO pacijentDTO = service.GetPacijentById(id);
 
-                return RedirectToAction("Index");
-            }
-            catch
+            service.DeletePacijent(pacijentDTO);
+
+            return RedirectToAction("Index");
+        }
+
+        protected override void Dispose(bool disposing)
+        {
+            if (disposing)
             {
-                return View();
+                db.Dispose();
             }
+            base.Dispose(disposing);
         }
     }
 }

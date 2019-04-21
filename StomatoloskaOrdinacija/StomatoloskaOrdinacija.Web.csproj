@@ -189,6 +189,7 @@
     <Compile Include="Startup.cs" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Content\bootstrap-flatly.css" />
     <Content Include="Content\bootstrap-theme.css" />
     <Content Include="Content\bootstrap-theme.min.css" />
     <Content Include="Content\bootstrap.css" />
@@ -244,6 +245,10 @@
     <Content Include="Views\Manage\VerifyPhoneNumber.cshtml" />
     <Content Include="Views\Shared\Lockout.cshtml" />
     <Content Include="Views\Shared\_LoginPartial.cshtml" />
+    <Content Include="Views\Pacijenti\Create.cshtml" />
+    <Content Include="Views\Pacijenti\Delete.cshtml" />
+    <Content Include="Views\Pacijenti\Details.cshtml" />
+    <Content Include="Views\Pacijenti\Edit.cshtml" />
     <Content Include="Views\Pacijenti\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
