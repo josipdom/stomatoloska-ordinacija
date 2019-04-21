@@ -9,9 +9,13 @@ namespace StomatoloskaOrdinacija.DAL
     [Table("Zahvat")]
     public partial class Zahvat
     {
-        public int ID { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
+        public Zahvat()
+        {
+            Narudzba = new HashSet<Narudzba>();
+        }
 
-        public int PacijentID { get; set; }
+        public int ID { get; set; }
 
         public int Sifra { get; set; }
 
@@ -21,6 +25,9 @@ namespace StomatoloskaOrdinacija.DAL
 
         public int Cijena { get; set; }
 
-        public virtual Pacijent Pacijent { get; set; }
+        public int Trajanje { get; set; }
+
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<Narudzba> Narudzba { get; set; }
     }
 }

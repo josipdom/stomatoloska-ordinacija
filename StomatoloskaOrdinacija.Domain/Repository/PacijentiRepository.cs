@@ -9,9 +9,9 @@ using System.Threading.Tasks;
 using System.Data.Entity;
 using StomatoloskaOrdinacija.Domain.Builders;
 
-namespace StomatoloskaOrdinacija.Domain.Services
+namespace StomatoloskaOrdinacija.Domain.Repository
 {
-    public class StomatoloskaOrdinacijaService
+    public class PacijentiRepository
     {
         OrdinacijaDb db = new OrdinacijaDb();
         StomatoloskaOrdinacijaDTOBuilder dtoBuilder = new StomatoloskaOrdinacijaDTOBuilder();
@@ -28,26 +28,6 @@ namespace StomatoloskaOrdinacija.Domain.Services
             dtoBuilder.FillPacijentDTOList(pacijentDTOList, pacijentiDbList);
             
             return pacijentDTOList;
-        }
-
-        public List<ZahvatDTO> GetPopisZahvata()
-        {
-            List<ZahvatDTO> zahvatDTOList = new List<ZahvatDTO>();
-            List<Zahvat> zahvatiDbList = db.Zahvat.ToList();
-
-            dtoBuilder.FillZahvatDTOList(zahvatDTOList, zahvatiDbList);
-
-            return zahvatDTOList;
-        }
-
-        public List<NarudzbaDTO> GetPopisNarudzba()
-        {
-            List<NarudzbaDTO> narudzbaDTOList = new List<NarudzbaDTO>();
-            List<Narudzba> narudzbeDbList = db.Narudzba.ToList();
-
-            dtoBuilder.FillNarudzbaDTOList(narudzbaDTOList, narudzbeDbList);
-
-            return narudzbaDTOList;
         }
 
         public PacijentDTO GetPacijentById(int id)

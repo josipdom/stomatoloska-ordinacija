@@ -30,7 +30,6 @@ namespace StomatoloskaOrdinacija.Domain.DTOs
         [Required(ErrorMessage = "{0} je obvezno polje")]
         public string Adresa { get; set; }
 
-        public virtual ICollection<Zahvat> Zahvat { get; set; }
         public virtual ICollection<Narudzba> Narudzba { get; set; }
     }
 }

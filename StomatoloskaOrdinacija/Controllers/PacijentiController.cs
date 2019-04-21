@@ -8,19 +8,19 @@ using System.Web;
 using System.Web.Mvc;
 using StomatoloskaOrdinacija.DAL;
 using StomatoloskaOrdinacija.Domain.DTOs;
-using StomatoloskaOrdinacija.Domain.Services;
+using StomatoloskaOrdinacija.Domain.Repository;
 
 namespace StomatoloskaOrdinacija.Controllers
 {
     public class PacijentiController : Controller
     {
         private OrdinacijaDb db = new OrdinacijaDb();
-        StomatoloskaOrdinacijaService service = new StomatoloskaOrdinacijaService();
+        PacijentiRepository pr = new PacijentiRepository();
 
         // GET: Pacijenti
         public ActionResult Index()
         {
-            var res = service.GetPopisPacijenata();
+            var res = pr.GetPopisPacijenata();
             return View(res);
         }
 
@@ -32,7 +32,7 @@ namespace StomatoloskaOrdinacija.Controllers
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
 
-            PacijentDTO pacijentDTO = service.GetPacijentById(id);
+            PacijentDTO pacijentDTO = pr.GetPacijentById(id);
 
             if (pacijentDTO == null)
             {
@@ -57,7 +57,7 @@ namespace StomatoloskaOrdinacija.Controllers
         {
             if (ModelState.IsValid)
             {
-                service.CreateNewPacijent(pacijentDTO);
+                pr.CreateNewPacijent(pacijentDTO);
 
                 return RedirectToAction("Index");
             }
@@ -73,7 +73,7 @@ namespace StomatoloskaOrdinacija.Controllers
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
 
-            PacijentDTO pacijentDTO = service.GetPacijentById(id);
+            PacijentDTO pacijentDTO = pr.GetPacijentById(id);
 
             if (pacijentDTO == null)
             {
@@ -92,7 +92,7 @@ namespace StomatoloskaOrdinacija.Controllers
             if (ModelState.IsValid)
             {
 
-                service.EditPacijent(pacijentDTO);
+                pr.EditPacijent(pacijentDTO);
 
                 return RedirectToAction("Index");
             }
@@ -106,7 +106,7 @@ namespace StomatoloskaOrdinacija.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            PacijentDTO pacijentDTO = service.GetPacijentById(id);
+            PacijentDTO pacijentDTO = pr.GetPacijentById(id);
             if (pacijentDTO == null)
             {
                 return HttpNotFound();
@@ -119,9 +119,9 @@ namespace StomatoloskaOrdinacija.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(int id)
         {
-            PacijentDTO pacijentDTO = service.GetPacijentById(id);
+            PacijentDTO pacijentDTO = pr.GetPacijentById(id);
 
-            service.DeletePacijent(pacijentDTO);
+            pr.DeletePacijent(pacijentDTO);
 
             return RedirectToAction("Index");
         }

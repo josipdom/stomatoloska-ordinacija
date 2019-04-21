@@ -14,6 +14,7 @@ namespace StomatoloskaOrdinacija.DAL
 
         public virtual DbSet<Narudzba> Narudzba { get; set; }
         public virtual DbSet<Pacijent> Pacijent { get; set; }
+        public virtual DbSet<RadnoVrijeme> RadnoVrijeme { get; set; }
         public virtual DbSet<Zahvat> Zahvat { get; set; }
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
@@ -23,9 +24,9 @@ namespace StomatoloskaOrdinacija.DAL
                 .WithRequired(e => e.Pacijent)
                 .WillCascadeOnDelete(false);
 
-            modelBuilder.Entity<Pacijent>()
-                .HasMany(e => e.Zahvat)
-                .WithRequired(e => e.Pacijent)
+            modelBuilder.Entity<Zahvat>()
+                .HasMany(e => e.Narudzba)
+                .WithRequired(e => e.Zahvat)
                 .WillCascadeOnDelete(false);
         }
     }

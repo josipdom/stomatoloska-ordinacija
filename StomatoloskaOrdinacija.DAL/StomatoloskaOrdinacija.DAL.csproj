@@ -54,6 +54,7 @@
     <Compile Include="OrdinacijaDb.cs" />
     <Compile Include="Models\Pacijent.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Models\RadnoVrijeme.cs" />
     <Compile Include="Models\Zahvat.cs" />
   </ItemGroup>
   <ItemGroup>

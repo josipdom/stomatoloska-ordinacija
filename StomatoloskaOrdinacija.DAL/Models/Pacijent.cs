@@ -13,7 +13,6 @@ namespace StomatoloskaOrdinacija.DAL
         public Pacijent()
         {
             Narudzba = new HashSet<Narudzba>();
-            Zahvat = new HashSet<Zahvat>();
         }
 
         public int ID { get; set; }
@@ -37,8 +36,5 @@ namespace StomatoloskaOrdinacija.DAL
 
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Narudzba> Narudzba { get; set; }
-
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Zahvat> Zahvat { get; set; }
     }
 }

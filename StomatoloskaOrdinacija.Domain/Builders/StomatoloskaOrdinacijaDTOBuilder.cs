@@ -22,10 +22,10 @@ namespace StomatoloskaOrdinacija.Domain.Builders
                 zahvatDTO.Cijena = zahvatDb.Cijena;
             }
             zahvatDTO.ID = zahvatDb.ID;
-            zahvatDTO.PacijentID = zahvatDb.PacijentID;
             zahvatDTO.Sifra = zahvatDb.Sifra;
             zahvatDTO.Naziv = zahvatDb.Naziv;
-            zahvatDTO.Pacijent = zahvatDb.Pacijent;
+            zahvatDTO.Trajanje = zahvatDb.Trajanje;
+            zahvatDTO.Narudzba = zahvatDb.Narudzba;
 
             return zahvatDTO;
         }
@@ -38,7 +38,6 @@ namespace StomatoloskaOrdinacija.Domain.Builders
             pacijentDTO.DatumRodjenja = pacijentDb.DatumRodjenja;
             pacijentDTO.Telefon = pacijentDb.Telefon;
             pacijentDTO.Adresa = pacijentDb.Adresa;
-            pacijentDTO.Zahvat = pacijentDb.Zahvat;
             pacijentDTO.Narudzba = pacijentDb.Narudzba;
 
             return pacijentDTO;
@@ -47,13 +46,16 @@ namespace StomatoloskaOrdinacija.Domain.Builders
         public NarudzbaDTO FillNarudzbaDTO(NarudzbaDTO narudzbaDTO, Narudzba narudzbaDb)
         {
             narudzbaDTO.ID = narudzbaDb.ID;
-            narudzbaDTO.Naziv = narudzbaDb.Naziv;
             narudzbaDTO.VrijemeOd = narudzbaDb.VrijemeOd;
             narudzbaDTO.VrijemeDo = narudzbaDb.VrijemeDo;
+            narudzbaDTO.SatiOd = narudzbaDb.SatiOd;
+            narudzbaDTO.SatiDo = narudzbaDb.SatiDo;
             narudzbaDTO.Opis = narudzbaDb.Opis;
             narudzbaDTO.PacijentID = narudzbaDb.PacijentID;
+            narudzbaDTO.ZahvatID = narudzbaDb.ZahvatID;
             narudzbaDTO.Dolazak = narudzbaDb.Dolazak;
             narudzbaDTO.Pacijent = narudzbaDb.Pacijent;
+            narudzbaDTO.Zahvat = narudzbaDb.Zahvat;
 
             return narudzbaDTO;
         }
