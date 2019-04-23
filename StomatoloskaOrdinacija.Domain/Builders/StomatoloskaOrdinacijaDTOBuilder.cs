@@ -28,6 +28,15 @@ namespace StomatoloskaOrdinacija.Domain.Builders
             return zahvatDTO;
         }
 
+        public ZahvatDTO PrepareZahvatDTOForCreate(OrdinacijaDb db)
+        {
+            ZahvatDTO zahvatDTO = new ZahvatDTO();
+            zahvatDTO.CijenaListDTO = FillSelectListItem(db.CijenaZahvata.ToList());
+            zahvatDTO.TrajanjeListDTO = FillSelectListItem(db.TrajanjeZahvata.ToList());
+
+            return zahvatDTO;
+        }
+
         public PacijentDTO FillPacijentDTO(OrdinacijaDb db, PacijentDTO pacijentDTO, Pacijent pacijentDb)
         {
             pacijentDTO.ID = pacijentDb.ID;
@@ -56,6 +65,15 @@ namespace StomatoloskaOrdinacija.Domain.Builders
             narudzbaDTO.Zahvat = narudzbaDb.Zahvat;
 
             return narudzbaDTO;
+        }
+
+        public RadnoVrijemeDTO FillRadnoVrijemeDTO(OrdinacijaDb db, RadnoVrijemeDTO radnoVrijemeDTO, RadnoVrijeme radnoVrijemeDb)
+        {
+            radnoVrijemeDTO.ID = radnoVrijemeDb.ID;
+            radnoVrijemeDTO.VrijemeOd = radnoVrijemeDb.VrijemeOd;
+            radnoVrijemeDTO.VrijemeDo = radnoVrijemeDb.VrijemeDo;
+
+            return radnoVrijemeDTO;
         }
 
         public List<ZahvatDTO> FillZahvatDTOList(OrdinacijaDb db, List<ZahvatDTO> zahvatDTOList, List<Zahvat> zahvatDbList)
@@ -127,13 +145,5 @@ namespace StomatoloskaOrdinacija.Domain.Builders
             return selectListItemList;
         }
 
-        public ZahvatDTO PrepareZahvatDTOForCreate(OrdinacijaDb db)
-        {
-            ZahvatDTO zahvatDTO = new ZahvatDTO();
-            zahvatDTO.CijenaListDTO = FillSelectListItem(db.CijenaZahvata.ToList());
-            zahvatDTO.TrajanjeListDTO = FillSelectListItem(db.TrajanjeZahvata.ToList());
-
-            return zahvatDTO;
-        }
     }
 }
