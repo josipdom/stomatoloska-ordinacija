@@ -21,11 +21,9 @@ namespace StomatoloskaOrdinacija.Domain.Repository
         {
             List<PacijentDTO> pacijentDTOList = new List<PacijentDTO>();
 
-            //zoveš bazu da ti vrati listu pacijenata db .ToList()
             List<Pacijent> pacijentiDbList = db.Pacijent.ToList();
 
-            //Zoveš Mapper da mapiraš listu Db objekata u listu DTO-oeva
-            dtoBuilder.FillPacijentDTOList(pacijentDTOList, pacijentiDbList);
+            dtoBuilder.FillPacijentDTOList(db, pacijentDTOList, pacijentiDbList);
             
             return pacijentDTOList;
         }
@@ -38,7 +36,7 @@ namespace StomatoloskaOrdinacija.Domain.Repository
                 .FirstOrDefault();
 
             PacijentDTO pacijentDTO = new PacijentDTO();
-            dtoBuilder.FillPacijentDTO(pacijentDTO, pacijentDb);
+            dtoBuilder.FillPacijentDTO(db, pacijentDTO, pacijentDb);
 
             return pacijentDTO;
         }

@@ -1,0 +1,50 @@
+﻿@model StomatoloskaOrdinacija.Domain.DTOs.ZahvatDTO
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>ZahvatDTO</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Sifra)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Sifra)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Naziv)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Naziv)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Cijena)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Cijena)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Trajanje)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Trajanje)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.ID }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

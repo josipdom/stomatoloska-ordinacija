@@ -30,8 +30,8 @@ namespace StomatoloskaOrdinacija.Domain.Mappers
             zahvat.ID = zahvatDTO.ID;
             zahvat.Sifra = zahvatDTO.Sifra;
             zahvat.Naziv = zahvatDTO.Naziv;
-            zahvat.Cijena = zahvatDTO.Cijena;
-            zahvat.Trajanje = zahvatDTO.Trajanje;
+            zahvat.CijenaID = zahvatDTO.CijenaID;
+            zahvat.TrajanjeID = zahvatDTO.TrajanjeID;
 
             return zahvat;
         }
@@ -62,6 +62,24 @@ namespace StomatoloskaOrdinacija.Domain.Mappers
             radnoVrijeme.VrijemeDo = radnoVrijemeDTO.VrijemeDo;
 
             return radnoVrijeme;
+        }
+
+        public CijenaZahvata MapCijenaZahvataDTOToDb(CijenaZahvataDTO cijenaZahvataDTO)
+        {
+            CijenaZahvata cijenaZahvata = new CijenaZahvata();
+            cijenaZahvata.ID = cijenaZahvataDTO.ID;
+            cijenaZahvata.Cijena = cijenaZahvataDTO.Cijena;
+
+            return cijenaZahvata;
+        }
+
+        public TrajanjeZahvata MapTrajanjeZahvataDTOToDb(TrajanjeZahvataDTO trajanjeZahvataDTO)
+        {
+            TrajanjeZahvata trajanjeZahvata = new TrajanjeZahvata();
+            trajanjeZahvata.ID = trajanjeZahvataDTO.ID;
+            trajanjeZahvata.Trajanje = trajanjeZahvataDTO.Trajanje;
+
+            return trajanjeZahvata;
         }
     }
 }

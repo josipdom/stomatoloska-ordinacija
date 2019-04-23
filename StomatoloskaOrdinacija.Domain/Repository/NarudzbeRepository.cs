@@ -21,7 +21,7 @@ namespace StomatoloskaOrdinacija.Domain.Repository
             List<NarudzbaDTO> narudzbaDTOList = new List<NarudzbaDTO>();
             List<Narudzba> narudzbeDbList = db.Narudzba.ToList();
 
-            dtoBuilder.FillNarudzbaDTOList(narudzbaDTOList, narudzbeDbList);
+            dtoBuilder.FillNarudzbaDTOList(db, narudzbaDTOList, narudzbeDbList);
 
             return narudzbaDTOList;
         }

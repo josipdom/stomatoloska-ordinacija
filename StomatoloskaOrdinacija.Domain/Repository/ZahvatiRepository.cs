@@ -22,7 +22,7 @@ namespace StomatoloskaOrdinacija.Domain.Repository
             List<ZahvatDTO> zahvatDTOList = new List<ZahvatDTO>();
             List<Zahvat> zahvatiDbList = db.Zahvat.ToList();
 
-            dtoBuilder.FillZahvatDTOList(zahvatDTOList, zahvatiDbList);
+            dtoBuilder.FillZahvatDTOList(db, zahvatDTOList, zahvatiDbList);
 
             return zahvatDTOList;
         }
@@ -35,7 +35,7 @@ namespace StomatoloskaOrdinacija.Domain.Repository
                 .FirstOrDefault();
 
             ZahvatDTO zahvatDTO = new ZahvatDTO();
-            dtoBuilder.FillZahvatDTO(zahvatDTO, zahvatDb);
+            dtoBuilder.FillZahvatDTO(db, zahvatDTO, zahvatDb);
 
             return zahvatDTO;
         }
@@ -46,6 +46,12 @@ namespace StomatoloskaOrdinacija.Domain.Repository
 
             db.Zahvat.Add(zahvatDb);
             db.SaveChanges();
+        }
+
+        public ZahvatDTO GetEmptyZahvat()
+        {
+            ZahvatDTO zahvatDTO = dtoBuilder.PrepareZahvatDTOForCreate(db);
+            return zahvatDTO;
         }
 
         public void DeleteZahvat(ZahvatDTO zahvatDTO)

@@ -1,10 +1,12 @@
 ﻿using StomatoloskaOrdinacija.DAL;
+using StomatoloskaOrdinacija.Domain.Resources;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Web.Mvc;
 
 namespace StomatoloskaOrdinacija.Domain.DTOs
 {
@@ -12,16 +14,22 @@ namespace StomatoloskaOrdinacija.Domain.DTOs
     {
         public int ID { get; set; }
 
-        public int Sifra { get; set; }
+        [Required(ErrorMessage = "{0} je obvezno polje")]
+        [Display(Name = "Šifra")]
+        [StringLength(5, MinimumLength = 0, ErrorMessage = "Maksimalno 5 znamenki")]
+        public string Sifra { get; set; }
 
-        [Required]
         [StringLength(150)]
+        [Required(ErrorMessage = "{0} je obvezno polje")]
         public string Naziv { get; set; }
 
-        public int Cijena { get; set; }
+        public int CijenaID { get; set; }
+        public int TrajanjeID { get; set; }
+        public string Cijena { get; set; }
+        public string Trajanje { get; set; }
 
-        public int Trajanje { get; set; }
+        public List<SelectListItem> CijenaListDTO { get; set; }
 
-        public virtual ICollection<Narudzba> Narudzba { get; set; }
+        public List<SelectListItem> TrajanjeListDTO { get; set; }
     }
 }

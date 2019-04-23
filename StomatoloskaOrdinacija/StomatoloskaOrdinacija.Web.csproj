@@ -177,6 +177,7 @@
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
     <Compile Include="Controllers\PacijentiController.cs" />
+    <Compile Include="Controllers\ZahvatiController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -248,6 +249,11 @@
     <Content Include="Views\Pacijenti\Details.cshtml" />
     <Content Include="Views\Pacijenti\Edit.cshtml" />
     <Content Include="Views\Pacijenti\Index.cshtml" />
+    <Content Include="Views\Zahvati\Create.cshtml" />
+    <Content Include="Views\Zahvati\Delete.cshtml" />
+    <Content Include="Views\Zahvati\Details.cshtml" />
+    <Content Include="Views\Zahvati\Edit.cshtml" />
+    <Content Include="Views\Zahvati\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

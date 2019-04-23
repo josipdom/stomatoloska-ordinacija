@@ -6,31 +6,29 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Web.Mvc;
 
 namespace StomatoloskaOrdinacija.Domain.Builders
 {
     public class StomatoloskaOrdinacijaDTOBuilder
     {
-        public ZahvatDTO FillZahvatDTO(ZahvatDTO zahvatDTO, Zahvat zahvatDb)
+        public ZahvatDTO FillZahvatDTO(OrdinacijaDb db, ZahvatDTO zahvatDTO, Zahvat zahvatDb)
         {
-            if (zahvatDTO.Sifra == (int)VrsteZahvataEnum.Pregled)
-            {
-                zahvatDTO.Cijena = 0;
-            }
-            else
-            {
-                zahvatDTO.Cijena = zahvatDb.Cijena;
-            }
             zahvatDTO.ID = zahvatDb.ID;
             zahvatDTO.Sifra = zahvatDb.Sifra;
             zahvatDTO.Naziv = zahvatDb.Naziv;
-            zahvatDTO.Trajanje = zahvatDb.Trajanje;
-            zahvatDTO.Narudzba = zahvatDb.Narudzba;
+            zahvatDTO.Cijena = zahvatDb.CijenaZahvata.Cijena.ToString();
+            zahvatDTO.Trajanje = zahvatDb.TrajanjeZahvata.Trajanje.ToShortTimeString();
+
+            zahvatDTO.TrajanjeID = zahvatDb.TrajanjeID;
+            zahvatDTO.CijenaID = zahvatDb.CijenaID;
+            zahvatDTO.CijenaListDTO = FillSelectListItem(db.CijenaZahvata.ToList());
+            zahvatDTO.TrajanjeListDTO = FillSelectListItem(db.TrajanjeZahvata.ToList());
 
             return zahvatDTO;
         }
 
-        public PacijentDTO FillPacijentDTO(PacijentDTO pacijentDTO, Pacijent pacijentDb)
+        public PacijentDTO FillPacijentDTO(OrdinacijaDb db, PacijentDTO pacijentDTO, Pacijent pacijentDb)
         {
             pacijentDTO.ID = pacijentDb.ID;
             pacijentDTO.Ime = pacijentDb.Ime;
@@ -43,7 +41,7 @@ namespace StomatoloskaOrdinacija.Domain.Builders
             return pacijentDTO;
         }
 
-        public NarudzbaDTO FillNarudzbaDTO(NarudzbaDTO narudzbaDTO, Narudzba narudzbaDb)
+        public NarudzbaDTO FillNarudzbaDTO(OrdinacijaDb db, NarudzbaDTO narudzbaDTO, Narudzba narudzbaDb)
         {
             narudzbaDTO.ID = narudzbaDb.ID;
             narudzbaDTO.VrijemeOd = narudzbaDb.VrijemeOd;
@@ -60,12 +58,12 @@ namespace StomatoloskaOrdinacija.Domain.Builders
             return narudzbaDTO;
         }
 
-        public List<ZahvatDTO> FillZahvatDTOList(List<ZahvatDTO> zahvatDTOList, List<Zahvat> zahvatDbList)
+        public List<ZahvatDTO> FillZahvatDTOList(OrdinacijaDb db, List<ZahvatDTO> zahvatDTOList, List<Zahvat> zahvatDbList)
         {
             foreach (var zahvatDb in zahvatDbList)
             {
                 ZahvatDTO zahvatDTO = new ZahvatDTO();
-                FillZahvatDTO(zahvatDTO, zahvatDb);
+                FillZahvatDTO(db, zahvatDTO, zahvatDb);
 
                 zahvatDTOList.Add(zahvatDTO);
             }
@@ -73,28 +71,69 @@ namespace StomatoloskaOrdinacija.Domain.Builders
             return zahvatDTOList;
         }
 
-        public List<PacijentDTO> FillPacijentDTOList(List<PacijentDTO> pacijentDTOList, List<Pacijent> pacijentDbList)
+        public List<PacijentDTO> FillPacijentDTOList(OrdinacijaDb db, List<PacijentDTO> pacijentDTOList, List<Pacijent> pacijentDbList)
         {
             foreach (var pacijentDb in pacijentDbList)
             {
                 PacijentDTO pacijentDTO = new PacijentDTO();
-                FillPacijentDTO(pacijentDTO, pacijentDb);
+                FillPacijentDTO(db, pacijentDTO, pacijentDb);
                 pacijentDTOList.Add(pacijentDTO);
             }
 
             return pacijentDTOList;
         }
 
-        public List<NarudzbaDTO> FillNarudzbaDTOList(List<NarudzbaDTO> narudzbaDTOList, List<Narudzba> narudzbaDbList)
+        public List<NarudzbaDTO> FillNarudzbaDTOList(OrdinacijaDb db, List<NarudzbaDTO> narudzbaDTOList, List<Narudzba> narudzbaDbList)
         {
             foreach (var narudzbaDb in narudzbaDbList)
             {
                 NarudzbaDTO narudzbaDTO = new NarudzbaDTO();
-                FillNarudzbaDTO(narudzbaDTO, narudzbaDb);
+                FillNarudzbaDTO(db, narudzbaDTO, narudzbaDb);
                 narudzbaDTOList.Add(narudzbaDTO);
             }
 
             return narudzbaDTOList;
+        }
+
+        public List<SelectListItem> FillSelectListItem(List<CijenaZahvata> cijenaZahvata)
+        {
+            List<SelectListItem> selectListItemList = new List<SelectListItem>();
+
+            foreach (var item in cijenaZahvata)
+            {
+                SelectListItem o = new SelectListItem();
+                o.Value = item.ID.ToString();
+                o.Text = item.Cijena.ToString();
+
+                selectListItemList.Add(o);
+            }
+
+            return selectListItemList;
+        }
+
+        public List<SelectListItem> FillSelectListItem(List<TrajanjeZahvata> trajanjeZahvata)
+        {
+            List<SelectListItem> selectListItemList = new List<SelectListItem>();
+
+            foreach (var item in trajanjeZahvata)
+            {
+                SelectListItem o = new SelectListItem();
+                o.Value = item.ID.ToString();
+                o.Text = item.Trajanje.ToShortTimeString();
+
+                selectListItemList.Add(o);
+            }
+
+            return selectListItemList;
+        }
+
+        public ZahvatDTO PrepareZahvatDTOForCreate(OrdinacijaDb db)
+        {
+            ZahvatDTO zahvatDTO = new ZahvatDTO();
+            zahvatDTO.CijenaListDTO = FillSelectListItem(db.CijenaZahvata.ToList());
+            zahvatDTO.TrajanjeListDTO = FillSelectListItem(db.TrajanjeZahvata.ToList());
+
+            return zahvatDTO;
         }
     }
 }
