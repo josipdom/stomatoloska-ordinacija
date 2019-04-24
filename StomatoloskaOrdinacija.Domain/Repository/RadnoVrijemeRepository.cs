@@ -38,5 +38,13 @@ namespace StomatoloskaOrdinacija.Domain.Repository
             db.SaveChanges();
 
         }
+
+        public int GetRadnoVrijemeId()
+        {
+            RadnoVrijeme radnoVrijeme = db.RadnoVrijeme.FirstOrDefault();
+            var radnoVrijemeId = radnoVrijeme.ID;
+
+            return radnoVrijemeId;
+        }
     }
 }

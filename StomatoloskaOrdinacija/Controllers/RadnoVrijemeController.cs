@@ -62,8 +62,9 @@ namespace StomatoloskaOrdinacija.Controllers
         //}
 
         // GET: RadnoVrijeme/Edit/5
-        public ActionResult Edit(int id)
+        public ActionResult Edit(/*int id*/)
         {
+            var id = rvr.GetRadnoVrijemeId();
             if (id == 0)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
