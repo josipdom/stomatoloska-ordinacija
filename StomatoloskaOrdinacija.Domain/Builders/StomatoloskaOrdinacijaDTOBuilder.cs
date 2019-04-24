@@ -76,6 +76,23 @@ namespace StomatoloskaOrdinacija.Domain.Builders
             return radnoVrijemeDTO;
         }
 
+        public CijenaZahvataDTO FillCijenaZahvataDTO(OrdinacijaDb db, CijenaZahvataDTO cijenaZahvataDTO, CijenaZahvata cijenaZahvataDb)
+        {
+            cijenaZahvataDTO.ID = cijenaZahvataDb.ID;
+            cijenaZahvataDTO.Cijena = cijenaZahvataDb.Cijena;
+
+            return cijenaZahvataDTO;
+        }
+
+        public TrajanjeZahvataDTO FillTrajanjeZahvataDTO(OrdinacijaDb db, TrajanjeZahvataDTO trajanjeZahvataDTO, TrajanjeZahvata trajanjeZahvataDb)
+        {
+            trajanjeZahvataDTO.ID = trajanjeZahvataDb.ID;
+            trajanjeZahvataDTO.Trajanje = trajanjeZahvataDb.Trajanje;
+
+            return trajanjeZahvataDTO;
+        }
+
+
         public List<ZahvatDTO> FillZahvatDTOList(OrdinacijaDb db, List<ZahvatDTO> zahvatDTOList, List<Zahvat> zahvatDbList)
         {
             foreach (var zahvatDb in zahvatDbList)
@@ -112,6 +129,33 @@ namespace StomatoloskaOrdinacija.Domain.Builders
 
             return narudzbaDTOList;
         }
+
+        public List<CijenaZahvataDTO> FillCijenaZahvataDTOList(OrdinacijaDb db, List<CijenaZahvataDTO> cijenaZahvatDTOList, List<CijenaZahvata> cijenaZahvataDbList)
+        {
+            foreach (var cijenaZahvataDb in cijenaZahvataDbList)
+            {
+                CijenaZahvataDTO cijenaZahvataDTO = new CijenaZahvataDTO();
+                FillCijenaZahvataDTO(db, cijenaZahvataDTO, cijenaZahvataDb);
+
+                cijenaZahvatDTOList.Add(cijenaZahvataDTO);
+            }
+
+            return cijenaZahvatDTOList;
+        }
+
+        public List<TrajanjeZahvataDTO> FillTrajanjeZahvataDTOList(OrdinacijaDb db, List<TrajanjeZahvataDTO> trajanjeZahvatDTOList, List<TrajanjeZahvata> trajanjeZahvataDbList)
+        {
+            foreach (var trajanjeZahvataDb in trajanjeZahvataDbList)
+            {
+                TrajanjeZahvataDTO trajanjeZahvataDTO = new TrajanjeZahvataDTO();
+                FillTrajanjeZahvataDTO(db, trajanjeZahvataDTO, trajanjeZahvataDb);
+
+                trajanjeZahvatDTOList.Add(trajanjeZahvataDTO);
+            }
+
+            return trajanjeZahvatDTOList;
+        }
+
 
         public List<SelectListItem> FillSelectListItem(List<CijenaZahvata> cijenaZahvata)
         {

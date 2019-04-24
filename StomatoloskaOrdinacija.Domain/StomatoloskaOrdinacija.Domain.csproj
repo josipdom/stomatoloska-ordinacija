@@ -61,6 +61,7 @@
     <Compile Include="Enums\TrajanjeZahvataEnum.cs" />
     <Compile Include="Mappers\StomatoloskaOrdinacijaMapper.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Repository\CijeneZahvataRepository.cs" />
     <Compile Include="Repository\NarudzbeRepository.cs" />
     <Compile Include="Repository\PacijentiRepository.cs" />
     <Compile Include="Repository\RadnoVrijemeRepository.cs" />
