@@ -177,6 +177,7 @@
     <Compile Include="Controllers\CijenaZahvataController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
+    <Compile Include="Controllers\NarudzbaController.cs" />
     <Compile Include="Controllers\PacijentiController.cs" />
     <Compile Include="Controllers\RadnoVrijemeController.cs" />
     <Compile Include="Controllers\TrajanjeZahvataController.cs" />
@@ -270,6 +271,11 @@
     <Content Include="Views\TrajanjeZahvata\Delete.cshtml" />
     <Content Include="Views\TrajanjeZahvata\Edit.cshtml" />
     <Content Include="Views\TrajanjeZahvata\Index.cshtml" />
+    <Content Include="Views\Narudzba\Create.cshtml" />
+    <Content Include="Views\Narudzba\Delete.cshtml" />
+    <Content Include="Views\Narudzba\Details.cshtml" />
+    <Content Include="Views\Narudzba\Edit.cshtml" />
+    <Content Include="Views\Narudzba\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

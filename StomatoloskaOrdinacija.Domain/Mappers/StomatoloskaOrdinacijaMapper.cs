@@ -40,10 +40,7 @@ namespace StomatoloskaOrdinacija.Domain.Mappers
         {
             Narudzba narudzba = new Narudzba();
             narudzba.ID = narudzbaDTO.ID;
-            narudzba.VrijemeOd = narudzbaDTO.VrijemeOd;
-            narudzba.VrijemeDo = narudzbaDTO.VrijemeDo;
-            narudzba.SatiOd = narudzbaDTO.SatiOd;
-            narudzba.SatiDo = narudzbaDTO.SatiDo;
+            narudzba.Vrijeme = narudzbaDTO.Datum.AddHours(narudzbaDTO.Sati).AddMinutes(narudzbaDTO.Minute);
             narudzba.Opis = narudzbaDTO.Opis;
             narudzba.PacijentID = narudzbaDTO.PacijentID;
             narudzba.ZahvatID = narudzbaDTO.ZahvatID;

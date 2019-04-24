@@ -9,9 +9,9 @@ using System.Threading.Tasks;
 using System.Data.Entity;
 using StomatoloskaOrdinacija.Domain.Builders;
 
-namespace StomatoloskaOrdinacija.Domain.Repository
+namespace StomatoloskaOrdinacija.Domain.Services
 {
-    public class PacijentiRepository
+    public class PacijentiService
     {
         OrdinacijaDb db = new OrdinacijaDb();
         StomatoloskaOrdinacijaDTOBuilder dtoBuilder = new StomatoloskaOrdinacijaDTOBuilder();

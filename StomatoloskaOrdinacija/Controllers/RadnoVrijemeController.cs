@@ -8,14 +8,14 @@ using System.Web;
 using System.Web.Mvc;
 using StomatoloskaOrdinacija.DAL;
 using StomatoloskaOrdinacija.Domain.DTOs;
-using StomatoloskaOrdinacija.Domain.Repository;
+using StomatoloskaOrdinacija.Domain.Services;
 
 namespace StomatoloskaOrdinacija.Controllers
 {
     public class RadnoVrijemeController : Controller
     {
         private OrdinacijaDb db = new OrdinacijaDb();
-        RadnoVrijemeRepository rvr = new RadnoVrijemeRepository();
+        RadnoVrijemeService service = new RadnoVrijemeService();
 
         //// GET: RadnoVrijeme
         //public ActionResult Index()
@@ -64,12 +64,12 @@ namespace StomatoloskaOrdinacija.Controllers
         // GET: RadnoVrijeme/Edit/5
         public ActionResult Edit(/*int id*/)
         {
-            var id = rvr.GetRadnoVrijemeId();
+            var id = service.GetRadnoVrijemeId();
             if (id == 0)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            RadnoVrijemeDTO radnoVrijemeDTO = rvr.GetRadnoVrijemeById(id);
+            RadnoVrijemeDTO radnoVrijemeDTO = service.GetRadnoVrijemeById(id);
             if (radnoVrijemeDTO == null)
             {
                 return HttpNotFound();
@@ -86,7 +86,7 @@ namespace StomatoloskaOrdinacija.Controllers
         {
             if (ModelState.IsValid)
             {
-                rvr.EditRadnoVrijeme(radnoVrijemeDTO);
+                service.EditRadnoVrijeme(radnoVrijemeDTO);
 
                 return RedirectToAction("Index", "Home");
             }

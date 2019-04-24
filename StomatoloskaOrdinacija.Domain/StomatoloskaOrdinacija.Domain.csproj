@@ -61,12 +61,12 @@
     <Compile Include="Enums\TrajanjeZahvataEnum.cs" />
     <Compile Include="Mappers\StomatoloskaOrdinacijaMapper.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Repository\CijeneZahvataRepository.cs" />
-    <Compile Include="Repository\NarudzbeRepository.cs" />
-    <Compile Include="Repository\PacijentiRepository.cs" />
-    <Compile Include="Repository\RadnoVrijemeRepository.cs" />
-    <Compile Include="Repository\TrajanjeZahvataRepository.cs" />
-    <Compile Include="Repository\ZahvatiRepository.cs" />
+    <Compile Include="Services\CijeneZahvataService.cs" />
+    <Compile Include="Services\NarudzbeService.cs" />
+    <Compile Include="Services\PacijentiService.cs" />
+    <Compile Include="Services\RadnoVrijemeService.cs" />
+    <Compile Include="Services\TrajanjeZahvataService.cs" />
+    <Compile Include="Services\ZahvatiRepository.cs" />
     <Compile Include="Resources\Labels.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>

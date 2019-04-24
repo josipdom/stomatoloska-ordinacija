@@ -9,9 +9,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace StomatoloskaOrdinacija.Domain.Repository
+namespace StomatoloskaOrdinacija.Domain.Services
 {
-    public class CijeneZahvataRepository
+    public class CijeneZahvataService
     {
         OrdinacijaDb db = new OrdinacijaDb();
         StomatoloskaOrdinacijaDTOBuilder dtoBuilder = new StomatoloskaOrdinacijaDTOBuilder();

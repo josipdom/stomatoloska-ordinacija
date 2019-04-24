@@ -11,13 +11,7 @@ namespace StomatoloskaOrdinacija.DAL
     {
         public int ID { get; set; }
 
-        public DateTime VrijemeOd { get; set; }
-
-        public DateTime VrijemeDo { get; set; }
-
-        public int SatiOd { get; set; }
-
-        public int SatiDo { get; set; }
+        public DateTime Vrijeme { get; set; }
 
         [StringLength(250)]
         public string Opis { get; set; }

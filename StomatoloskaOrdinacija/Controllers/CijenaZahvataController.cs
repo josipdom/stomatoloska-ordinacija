@@ -8,19 +8,19 @@ using System.Web;
 using System.Web.Mvc;
 using StomatoloskaOrdinacija.DAL;
 using StomatoloskaOrdinacija.Domain.DTOs;
-using StomatoloskaOrdinacija.Domain.Repository;
+using StomatoloskaOrdinacija.Domain.Services;
 
 namespace StomatoloskaOrdinacija.Controllers
 {
     public class CijenaZahvataController : Controller
     {
         private OrdinacijaDb db = new OrdinacijaDb();
-        CijeneZahvataRepository czr = new CijeneZahvataRepository();
+        CijeneZahvataService service = new CijeneZahvataService();
 
         // GET: CijenaZahvata
         public ActionResult Index()
         {
-            var res = czr.GetPopisCijenaZahvata();
+            var res = service.GetPopisCijenaZahvata();
             return View(res);
         }
 
@@ -39,7 +39,7 @@ namespace StomatoloskaOrdinacija.Controllers
         {
             if (ModelState.IsValid)
             {
-                czr.CreateNewCijenaZahvata(cijenaZahvataDTO);
+                service.CreateNewCijenaZahvata(cijenaZahvataDTO);
 
                 return RedirectToAction("Index");
             }
@@ -54,7 +54,7 @@ namespace StomatoloskaOrdinacija.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            CijenaZahvataDTO cijenaZahvataDTO = czr.GetCijenaZahvataById(id);
+            CijenaZahvataDTO cijenaZahvataDTO = service.GetCijenaZahvataById(id);
             if (cijenaZahvataDTO == null)
             {
                 return HttpNotFound();
@@ -71,7 +71,7 @@ namespace StomatoloskaOrdinacija.Controllers
         {
             if (ModelState.IsValid)
             {
-                czr.EditCijenaZahvata(cijenaZahvataDTO);
+                service.EditCijenaZahvata(cijenaZahvataDTO);
 
                 return RedirectToAction("Index");
             }
@@ -85,7 +85,7 @@ namespace StomatoloskaOrdinacija.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            CijenaZahvataDTO cijenaZahvataDTO = czr.GetCijenaZahvataById(id);
+            CijenaZahvataDTO cijenaZahvataDTO = service.GetCijenaZahvataById(id);
             if (cijenaZahvataDTO == null)
             {
                 return HttpNotFound();
@@ -98,9 +98,9 @@ namespace StomatoloskaOrdinacija.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(int id)
         {
-            CijenaZahvataDTO cijenaZahvataDTO = czr.GetCijenaZahvataById(id);
+            CijenaZahvataDTO cijenaZahvataDTO = service.GetCijenaZahvataById(id);
 
-            czr.DeleteCijenaZahvata(cijenaZahvataDTO);
+            service.DeleteCijenaZahvata(cijenaZahvataDTO);
 
             return RedirectToAction("Index");
         }

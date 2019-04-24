@@ -8,19 +8,19 @@ using System.Web;
 using System.Web.Mvc;
 using StomatoloskaOrdinacija.DAL;
 using StomatoloskaOrdinacija.Domain.DTOs;
-using StomatoloskaOrdinacija.Domain.Repository;
+using StomatoloskaOrdinacija.Domain.Services;
 
 namespace StomatoloskaOrdinacija.Controllers
 {
     public class TrajanjeZahvataController : Controller
     {
         private OrdinacijaDb db = new OrdinacijaDb();
-        TrajanjeZahvataRepository tzr = new TrajanjeZahvataRepository();
+        TrajanjeZahvataService service = new TrajanjeZahvataService();
 
         // GET: TrajanjeZahvata
         public ActionResult Index()
         {
-            var res = tzr.GetPopisTrajanjeZahvata();
+            var res = service.GetPopisTrajanjeZahvata();
             return View(res);
         }
 
@@ -39,7 +39,7 @@ namespace StomatoloskaOrdinacija.Controllers
         {
             if (ModelState.IsValid)
             {
-                tzr.CreateNewTrajanjeZahvata(trajanjeZahvataDTO);
+                service.CreateNewTrajanjeZahvata(trajanjeZahvataDTO);
 
                 return RedirectToAction("Index");
             }
@@ -54,7 +54,7 @@ namespace StomatoloskaOrdinacija.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            TrajanjeZahvataDTO trajanjeZahvataDTO = tzr.GetTrajanjeZahvataById(id);
+            TrajanjeZahvataDTO trajanjeZahvataDTO = service.GetTrajanjeZahvataById(id);
             if (trajanjeZahvataDTO == null)
             {
                 return HttpNotFound();
@@ -71,7 +71,7 @@ namespace StomatoloskaOrdinacija.Controllers
         {
             if (ModelState.IsValid)
             {
-                tzr.EditTrajanjeZahvata(trajanjeZahvataDTO);
+                service.EditTrajanjeZahvata(trajanjeZahvataDTO);
 
                 return RedirectToAction("Index");
             }
@@ -85,7 +85,7 @@ namespace StomatoloskaOrdinacija.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            TrajanjeZahvataDTO trajanjeZahvataDTO = tzr.GetTrajanjeZahvataById(id);
+            TrajanjeZahvataDTO trajanjeZahvataDTO = service.GetTrajanjeZahvataById(id);
             if (trajanjeZahvataDTO == null)
             {
                 return HttpNotFound();
@@ -98,9 +98,9 @@ namespace StomatoloskaOrdinacija.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(int id)
         {
-            TrajanjeZahvataDTO trajanjeZahvataDTO = tzr.GetTrajanjeZahvataById(id);
+            TrajanjeZahvataDTO trajanjeZahvataDTO = service.GetTrajanjeZahvataById(id);
 
-            tzr.DeleteTrajanjeZahvata(trajanjeZahvataDTO);
+            service.DeleteTrajanjeZahvata(trajanjeZahvataDTO);
 
             return RedirectToAction("Index");
         }

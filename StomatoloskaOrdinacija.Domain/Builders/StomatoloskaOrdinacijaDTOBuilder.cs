@@ -53,14 +53,26 @@ namespace StomatoloskaOrdinacija.Domain.Builders
         public NarudzbaDTO FillNarudzbaDTO(OrdinacijaDb db, NarudzbaDTO narudzbaDTO, Narudzba narudzbaDb)
         {
             narudzbaDTO.ID = narudzbaDb.ID;
-            narudzbaDTO.VrijemeOd = narudzbaDb.VrijemeOd;
-            narudzbaDTO.VrijemeDo = narudzbaDb.VrijemeDo;
-            narudzbaDTO.SatiOd = narudzbaDb.SatiOd;
-            narudzbaDTO.SatiDo = narudzbaDb.SatiDo;
+            narudzbaDTO.Datum = narudzbaDb.Vrijeme.Date;
+            narudzbaDTO.Sati = narudzbaDb.Vrijeme.Hour;
+            narudzbaDTO.Minute = narudzbaDb.Vrijeme.Minute;
+            narudzbaDTO.Vrijeme = narudzbaDb.Vrijeme.Date.AddHours(narudzbaDb.Vrijeme.Hour).AddMinutes(narudzbaDb.Vrijeme.Minute);
             narudzbaDTO.Opis = narudzbaDb.Opis;
+            narudzbaDTO.Dolazak = narudzbaDb.Dolazak;
+
             narudzbaDTO.PacijentID = narudzbaDb.PacijentID;
             narudzbaDTO.ZahvatID = narudzbaDb.ZahvatID;
-            narudzbaDTO.Dolazak = narudzbaDb.Dolazak;
+            narudzbaDTO.PacijentListDTO = FillSelectListItem(db.Pacijent.ToList());
+            narudzbaDTO.ZahvatListDTO = FillSelectListItem(db.Zahvat.ToList());
+
+            return narudzbaDTO;
+        }
+
+        public NarudzbaDTO PrepareNarudzbaDTOForCreate(OrdinacijaDb db)
+        {
+            NarudzbaDTO narudzbaDTO = new NarudzbaDTO();
+            narudzbaDTO.PacijentListDTO = FillSelectListItem(db.Pacijent.ToList());
+            narudzbaDTO.ZahvatListDTO = FillSelectListItem(db.Zahvat.ToList());
 
             return narudzbaDTO;
         }
@@ -180,6 +192,38 @@ namespace StomatoloskaOrdinacija.Domain.Builders
                 SelectListItem o = new SelectListItem();
                 o.Value = item.ID.ToString();
                 o.Text = item.Trajanje.ToShortTimeString();
+
+                selectListItemList.Add(o);
+            }
+
+            return selectListItemList;
+        }
+
+        public List<SelectListItem> FillSelectListItem(List<Pacijent> pacijent)
+        {
+            List<SelectListItem> selectListItemList = new List<SelectListItem>();
+
+            foreach (var item in pacijent)
+            {
+                SelectListItem o = new SelectListItem();
+                o.Value = item.ID.ToString();
+                o.Text = item.Ime + " " + item.Prezime;
+
+                selectListItemList.Add(o);
+            }
+
+            return selectListItemList;
+        }
+
+        public List<SelectListItem> FillSelectListItem(List<Zahvat> zahvat)
+        {
+            List<SelectListItem> selectListItemList = new List<SelectListItem>();
+
+            foreach (var item in zahvat)
+            {
+                SelectListItem o = new SelectListItem();
+                o.Value = item.ID.ToString();
+                o.Text = item.Naziv;
 
                 selectListItemList.Add(o);
             }

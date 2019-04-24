@@ -8,19 +8,19 @@ using System.Web;
 using System.Web.Mvc;
 using StomatoloskaOrdinacija.DAL;
 using StomatoloskaOrdinacija.Domain.DTOs;
-using StomatoloskaOrdinacija.Domain.Repository;
+using StomatoloskaOrdinacija.Domain.Services;
 
 namespace StomatoloskaOrdinacija.Controllers
 {
     public class ZahvatiController : Controller
     {
         private OrdinacijaDb db = new OrdinacijaDb();
-        ZahvatiRepository zr = new ZahvatiRepository();
+        ZahvatiService service = new ZahvatiService();
 
         // GET: Zahvati
         public ActionResult Index()
         {
-            var res = zr.GetPopisZahvata();
+            var res = service.GetPopisZahvata();
             return View(res);
         }
 
@@ -31,7 +31,7 @@ namespace StomatoloskaOrdinacija.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            ZahvatDTO zahvatDTO = zr.GetZahvatById(id);
+            ZahvatDTO zahvatDTO = service.GetZahvatById(id);
             if (zahvatDTO == null)
             {
                 return HttpNotFound();
@@ -42,7 +42,7 @@ namespace StomatoloskaOrdinacija.Controllers
         // GET: Zahvati/Create
         public ActionResult Create()
         {
-            var zahvat = zr.GetEmptyZahvat();
+            var zahvat = service.GetEmptyZahvat();
             return View(zahvat);
         }
 
@@ -55,7 +55,7 @@ namespace StomatoloskaOrdinacija.Controllers
         {
             if (ModelState.IsValid)
             {
-                zr.CreateNewZahvat(zahvatDTO);
+                service.CreateNewZahvat(zahvatDTO);
 
                 return RedirectToAction("Index");
             }
@@ -70,7 +70,7 @@ namespace StomatoloskaOrdinacija.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            ZahvatDTO zahvatDTO = zr.GetZahvatById(id);
+            ZahvatDTO zahvatDTO = service.GetZahvatById(id);
             if (zahvatDTO == null)
             {
                 return HttpNotFound();
@@ -87,7 +87,7 @@ namespace StomatoloskaOrdinacija.Controllers
         {
             if (ModelState.IsValid)
             {
-                zr.EditZahvat(zahvatDTO);
+                service.EditZahvat(zahvatDTO);
 
                 return RedirectToAction("Index");
             }
@@ -101,7 +101,7 @@ namespace StomatoloskaOrdinacija.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            ZahvatDTO zahvatDTO = zr.GetZahvatById(id);
+            ZahvatDTO zahvatDTO = service.GetZahvatById(id);
             if (zahvatDTO == null)
             {
                 return HttpNotFound();
@@ -114,9 +114,9 @@ namespace StomatoloskaOrdinacija.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(int id)
         {
-            ZahvatDTO zahvatDTO = zr.GetZahvatById(id);
+            ZahvatDTO zahvatDTO = service.GetZahvatById(id);
 
-            zr.DeleteZahvat(zahvatDTO);
+            service.DeleteZahvat(zahvatDTO);
 
             return RedirectToAction("Index");
         }
