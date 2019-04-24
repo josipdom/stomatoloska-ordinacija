@@ -179,6 +179,7 @@
     <Compile Include="Controllers\ManageController.cs" />
     <Compile Include="Controllers\PacijentiController.cs" />
     <Compile Include="Controllers\RadnoVrijemeController.cs" />
+    <Compile Include="Controllers\TrajanjeZahvataController.cs" />
     <Compile Include="Controllers\ZahvatiController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -265,6 +266,10 @@
     <Content Include="Views\CijenaZahvata\Delete.cshtml" />
     <Content Include="Views\CijenaZahvata\Edit.cshtml" />
     <Content Include="Views\CijenaZahvata\Index.cshtml" />
+    <Content Include="Views\TrajanjeZahvata\Create.cshtml" />
+    <Content Include="Views\TrajanjeZahvata\Delete.cshtml" />
+    <Content Include="Views\TrajanjeZahvata\Edit.cshtml" />
+    <Content Include="Views\TrajanjeZahvata\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
