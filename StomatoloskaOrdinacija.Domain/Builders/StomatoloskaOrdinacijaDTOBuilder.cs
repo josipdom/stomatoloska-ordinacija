@@ -61,8 +61,6 @@ namespace StomatoloskaOrdinacija.Domain.Builders
             narudzbaDTO.PacijentID = narudzbaDb.PacijentID;
             narudzbaDTO.ZahvatID = narudzbaDb.ZahvatID;
             narudzbaDTO.Dolazak = narudzbaDb.Dolazak;
-            narudzbaDTO.Pacijent = narudzbaDb.Pacijent;
-            narudzbaDTO.Zahvat = narudzbaDb.Zahvat;
 
             return narudzbaDTO;
         }

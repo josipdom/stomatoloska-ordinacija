@@ -48,8 +48,6 @@ namespace StomatoloskaOrdinacija.Domain.Mappers
             narudzba.PacijentID = narudzbaDTO.PacijentID;
             narudzba.ZahvatID = narudzbaDTO.ZahvatID;
             narudzba.Dolazak = narudzbaDTO.Dolazak;
-            narudzba.Pacijent = narudzbaDTO.Pacijent;
-            narudzba.Zahvat = narudzbaDTO.Zahvat;
 
             return narudzba;
         }

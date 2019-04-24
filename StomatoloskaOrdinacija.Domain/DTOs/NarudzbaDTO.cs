@@ -22,7 +22,5 @@ namespace StomatoloskaOrdinacija.Domain.DTOs
         public int PacijentID { get; set; }
         public int ZahvatID { get; set; }
         public bool Dolazak { get; set; }
-        public virtual Pacijent Pacijent { get; set; }
-        public virtual Zahvat Zahvat { get; set; }
     }
 }
