@@ -60,6 +60,7 @@ namespace StomatoloskaOrdinacija.Controllers
                 return RedirectToAction("Index");
             }
 
+            service.FillDDLPacijentTrajanje(zahvatDTO);
             return View(zahvatDTO);
         }
 

@@ -66,7 +66,7 @@
     <Compile Include="Services\PacijentiService.cs" />
     <Compile Include="Services\RadnoVrijemeService.cs" />
     <Compile Include="Services\TrajanjeZahvataService.cs" />
-    <Compile Include="Services\ZahvatiRepository.cs" />
+    <Compile Include="Services\ZahvatiService.cs" />
     <Compile Include="Resources\Labels.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>

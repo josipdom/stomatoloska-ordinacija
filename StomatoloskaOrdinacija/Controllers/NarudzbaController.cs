@@ -60,8 +60,8 @@ namespace StomatoloskaOrdinacija.Controllers
                 return RedirectToAction("Index");
             }
 
-            //ViewBag.PacijentID = new SelectList(db.Pacijents, "ID", "Ime", narudzbaDTO.PacijentID);
-            //ViewBag.ZahvatID = new SelectList(db.Zahvats, "ID", "Sifra", narudzbaDTO.ZahvatID);
+            service.FillDDLPacijentZahvat(narudzbaDTO);
+
             return View(narudzbaDTO);
         }
 

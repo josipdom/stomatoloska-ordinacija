@@ -71,5 +71,10 @@ namespace StomatoloskaOrdinacija.Domain.Services
             db.SaveChanges();
 
         }
+
+        public void FillDDLPacijentZahvat(NarudzbaDTO narudzbaDTO)
+        {
+            dtoBuilder.FillDDLPacijentZahvat(db, narudzbaDTO);
+        }
     }
 }

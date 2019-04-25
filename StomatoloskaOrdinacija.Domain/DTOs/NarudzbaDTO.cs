@@ -15,7 +15,6 @@ namespace StomatoloskaOrdinacija.Domain.DTOs
         public int ID { get; set; }
 
         [Required(ErrorMessage = "Datum je obvezno polje")]
-        [Display(Name = "Datum")]
         [DisplayFormat(ApplyFormatInEditMode = true, DataFormatString = "{0:yyyy-MM-dd}")]
         [DataType(DataType.Date)]
         public DateTime Datum { get; set; }

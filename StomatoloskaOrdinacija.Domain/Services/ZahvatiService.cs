@@ -43,14 +43,16 @@ namespace StomatoloskaOrdinacija.Domain.Services
         public void CreateNewZahvat(ZahvatDTO zahvatDTO)
         {
             Zahvat zahvatDb = dbMapper.MapZahvatDTOToDb(zahvatDTO);
-
+            
             db.Zahvat.Add(zahvatDb);
             db.SaveChanges();
         }
 
         public ZahvatDTO GetEmptyZahvat()
         {
-            ZahvatDTO zahvatDTO = dtoBuilder.PrepareZahvatDTOForCreate(db);
+            ZahvatDTO zahvatDTO = new ZahvatDTO();
+            zahvatDTO = dtoBuilder.FillDDLPacijentTrajanje(db, zahvatDTO);
+
             return zahvatDTO;
         }
 
@@ -69,7 +71,11 @@ namespace StomatoloskaOrdinacija.Domain.Services
 
             db.Entry(zahvatDb).State = EntityState.Modified;
             db.SaveChanges();
+        }
 
+        public void FillDDLPacijentTrajanje(ZahvatDTO zahvatDTO)
+        {
+            dtoBuilder.FillDDLPacijentTrajanje(db, zahvatDTO);
         }
     }
 }

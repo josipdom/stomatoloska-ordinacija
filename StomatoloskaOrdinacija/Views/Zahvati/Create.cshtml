@@ -36,7 +36,7 @@
             <div class="col-md-10">
                 @Html.DropDownListFor(model => model.CijenaID, Model.CijenaListDTO, "- Odaberite cijenu -", new { @class = "btn btn-default" }) 
                 @Html.ActionLink("Dodaj cijenu zahvata", "Index", "CijenaZahvata", null, new { @class = "btn btn-default" })
-                @Html.ValidationMessageFor(model => model.Cijena, "", new { @class = "text-danger" })
+                @Html.ValidationMessageFor(model => model.CijenaID, "", new { @class = "text-danger" })
             </div>
         </div>
 
@@ -45,7 +45,7 @@
             <div class="col-md-10">
                 @Html.DropDownListFor(model => model.TrajanjeID, Model.TrajanjeListDTO, "- Odaberite trajanje -", new { @class = "btn btn-default" })
                 @Html.ActionLink("Dodaj trajanje zahvata", "Index", "TrajanjeZahvata", null, new { @class = "btn btn-default" })
-                @Html.ValidationMessageFor(model => model.Trajanje, "", new { @class = "text-danger" })
+                @Html.ValidationMessageFor(model => model.TrajanjeID, "", new { @class = "text-danger" })
             </div>
         </div>
 
