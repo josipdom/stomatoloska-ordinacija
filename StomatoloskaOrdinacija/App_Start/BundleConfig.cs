@@ -25,6 +25,9 @@ namespace StomatoloskaOrdinacija
             bundles.Add(new StyleBundle("~/Content/css").Include(
                       "~/Content/bootstrap-flatly.css",
                       "~/Content/site.css"));
+
+            bundles.Add(new ScriptBundle("~/bundles/ej").Include(
+                      "~/Scripts/ej/web/ej.web.all.min.js"));
         }
     }
 }

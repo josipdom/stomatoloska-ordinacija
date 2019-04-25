@@ -42,7 +42,7 @@ namespace StomatoloskaOrdinacija.Domain.Services
 
         public void CreateNewNarudzba(NarudzbaDTO narudzbaDTO)
         {
-            Narudzba narudzbaDb = dbMapper.MapNarudzbaDTOToDb(narudzbaDTO);
+            Narudzba narudzbaDb = dbMapper.MapNarudzbaDTOToDb(db, narudzbaDTO);
 
             db.Narudzba.Add(narudzbaDb);
             db.SaveChanges();
@@ -56,7 +56,7 @@ namespace StomatoloskaOrdinacija.Domain.Services
 
         public void DeleteNarudzba(NarudzbaDTO narudzbaDTO)
         {
-            Narudzba narudzbaDb = dbMapper.MapNarudzbaDTOToDb(narudzbaDTO);
+            Narudzba narudzbaDb = dbMapper.MapNarudzbaDTOToDb(db, narudzbaDTO);
 
             db.Narudzba.Attach(narudzbaDb);
             db.Narudzba.Remove(narudzbaDb);
@@ -65,7 +65,7 @@ namespace StomatoloskaOrdinacija.Domain.Services
 
         public void EditNarudzba(NarudzbaDTO narudzbaDTO)
         {
-            Narudzba narudzbaDb = dbMapper.MapNarudzbaDTOToDb(narudzbaDTO);
+            Narudzba narudzbaDb = dbMapper.MapNarudzbaDTOToDb(db, narudzbaDTO);
 
             db.Entry(narudzbaDb).State = EntityState.Modified;
             db.SaveChanges();

@@ -16,7 +16,7 @@ namespace StomatoloskaOrdinacija
             routes.MapRoute(
                 name: "Default",
                 url: "{controller}/{action}/{id}",
-                defaults: new { controller = "Home", action = "Index", id = UrlParameter.Optional }
+                defaults: new { controller = "Naslovnica", action = "Kalendar", id = UrlParameter.Optional }
             );
         }
     }

@@ -1,31 +1,41 @@
-﻿@{
-    ViewBag.Title = "Home Page";
+﻿@using StomatoloskaOrdinacija.Domain.DTOs
+@model NarudzbaDTO
+
+@{
+    <!-- Datasource for Appointments -->
+    List<NarudzbaDTO> Narudzba = new List<NarudzbaDTO>();
+    Narudzba.Add(new NarudzbaDTO { ID = 1, Opis = "Opis", Vrijeme = new DateTime(2019, 04, 25, 10, 00, 00), Datum = new DateTime(2019, 04, 25, 11, 00, 00) });
 }
-
-<div class="jumbotron">
-    <h1>ASP.NET</h1>
-    <p class="lead">ASP.NET is a free web framework for building great Web sites and Web applications using HTML, CSS and JavaScript.</p>
-    <p><a href="https://asp.net" class="btn btn-primary btn-lg">Learn more &raquo;</a></p>
-</div>
-
-<div class="row">
-    <div class="col-md-4">
-        <h2>Getting started</h2>
-        <p>
-            ASP.NET MVC gives you a powerful, patterns-based way to build dynamic websites that
-            enables a clean separation of concerns and gives you full control over markup
-            for enjoyable, agile development.
-        </p>
-        <p><a class="btn btn-default" href="https://go.microsoft.com/fwlink/?LinkId=301865">Learn more &raquo;</a></p>
-    </div>
-    <div class="col-md-4">
-        <h2>Get more libraries</h2>
-        <p>NuGet is a free Visual Studio extension that makes it easy to add, remove, and update libraries and tools in Visual Studio projects.</p>
-        <p><a class="btn btn-default" href="https://go.microsoft.com/fwlink/?LinkId=301866">Learn more &raquo;</a></p>
-    </div>
-    <div class="col-md-4">
-        <h2>Web Hosting</h2>
-        <p>You can easily find a web hosting company that offers the right mix of features and price for your applications.</p>
-        <p><a class="btn btn-default" href="https://go.microsoft.com/fwlink/?LinkId=301867">Learn more &raquo;</a></p>
-    </div>
-</div>
+@{ List<string> view = new List<string>() { "Day", "WorkWeek" }; }
+<h2>Kalendar narudžbi</h2>
+<hr />
+@(Html.EJ().Schedule("Schedule1")
+                .Width("100%")
+                .Height("525px")
+                .CurrentDate(DateTime.Now)
+                .TimeZone("UTC +01:00")
+                .StartHour(8)
+                .EndHour(16)
+                .Locale("hr-HR")
+                .Views(view)
+                .ShowQuickWindow(false)
+                .ReadOnly(true)
+                .ShowAppointmentNavigator(true)
+                .ShowAllDayRow(false)
+                .EnableAppointmentResize(false)
+                .AllowDragAndDrop(false)
+                .TimeMode(TimeMode.Hour24)
+                .DateFormat("dd.MM.yyyy")
+                .AppointmentSettings(fields => fields.Datasource(Narudzba)
+                    .Id("ID")
+                    .Subject("Opis")
+                    .StartTime("Vrijeme")
+                    .EndTime("Datum")
+                    )
+                .ScheduleClientSideEvents(evt => evt.AppointmentWindowOpen("onAppointmentWindowOpen"))
+)
+<script>
+    function onAppointmentWindowOpen(args) {
+        args.cancel = true;
+    }
+</script>

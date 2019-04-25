@@ -88,7 +88,7 @@ namespace StomatoloskaOrdinacija.Controllers
             {
                 service.EditRadnoVrijeme(radnoVrijemeDTO);
 
-                return RedirectToAction("Index", "Home");
+                return RedirectToAction("Kalendar", "Naslovnica");
             }
             return View(radnoVrijemeDTO);
         }

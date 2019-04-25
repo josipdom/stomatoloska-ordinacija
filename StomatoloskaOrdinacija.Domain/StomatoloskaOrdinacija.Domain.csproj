@@ -72,6 +72,7 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Labels.resx</DependentUpon>
     </Compile>
+    <Compile Include="ViewModels\NarudzbaRadnoVrijemeVM.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\StomatoloskaOrdinacija.DAL\StomatoloskaOrdinacija.DAL.csproj">

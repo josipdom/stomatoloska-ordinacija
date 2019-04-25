@@ -1,0 +1,61 @@
+﻿@using StomatoloskaOrdinacija.Domain.ViewModels;
+@model NarudzbaRadnoVrijemeVM
+
+@{  List<string> view = new List<string>() { "Day", "WorkWeek" };
+
+    List<object> Narudzba = new List<object>();
+    foreach (var item in Model.NarudzbaDTOList)
+    {
+        Narudzba.Add(item);
+    }
+
+    var vrijemeOd = Model.RadnoVrijemeDTO.VrijemeOd;
+    var vrijemeDo = Model.RadnoVrijemeDTO.VrijemeDo;
+}
+
+@*@{ 
+    foreach (var item in Model.NarudzbaDTOList)
+    {
+        if(item.Dolazak == true)
+        {
+            <style>
+                .e-schedule .e-appointment {
+                    background: linear-gradient(to bottom,#ff0000 0%,#ff0000 100%) !important;
+                }
+            </style>
+        }
+    }
+}*@
+
+<h2>Kalendar narudžbi</h2>
+<hr />
+@(Html.EJ().Schedule("Schedule1")
+                    .Width("100%")
+                    .Height("525px")
+                    .CurrentDate(DateTime.Now)
+                    .TimeZone("UTC +01:00")
+                    .StartHour(vrijemeOd)
+                    .EndHour(vrijemeDo)
+                    .Locale("hr-HR")
+                    .Views(view)
+                    .ShowQuickWindow(false)
+                    .ReadOnly(true)
+                    .ShowAppointmentNavigator(true)
+                    .ShowAllDayRow(false)
+                    .EnableAppointmentResize(false)
+                    .AllowDragAndDrop(false)
+                    .TimeMode(TimeMode.Hour24)
+                    .DateFormat("dd.MM.yyyy")
+                    .AppointmentSettings(fields => fields.Datasource(Narudzba)
+                        .Id("ID")
+                        .Subject("Opis")
+                        .StartTime("Vrijeme")
+                        .EndTime("VrijemeZavrsetkaZahvata")
+                        )
+                    .ScheduleClientSideEvents(evt => evt.AppointmentWindowOpen("onAppointmentWindowOpen"))
+)
+<script>
+    function onAppointmentWindowOpen(args) {
+        args.cancel = true;
+    }
+</script>

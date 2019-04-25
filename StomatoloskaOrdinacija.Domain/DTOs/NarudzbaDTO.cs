@@ -40,6 +40,8 @@ namespace StomatoloskaOrdinacija.Domain.DTOs
 
         public bool Dolazak { get; set; }
 
+        public DateTime VrijemeZavrsetkaZahvata { get; set; }
+
         public List<SelectListItem> PacijentListDTO { get; set; }
 
         public List<SelectListItem> ZahvatListDTO { get; set; }

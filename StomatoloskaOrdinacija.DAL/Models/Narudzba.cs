@@ -13,6 +13,8 @@ namespace StomatoloskaOrdinacija.DAL
 
         public DateTime Vrijeme { get; set; }
 
+        public DateTime VrijemeZavrsetkaZahvata { get; set; }
+
         [StringLength(250)]
         public string Opis { get; set; }
 

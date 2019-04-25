@@ -57,9 +57,9 @@ namespace StomatoloskaOrdinacija.Domain.Builders
             narudzbaDTO.Sati = narudzbaDb.Vrijeme.Hour;
             narudzbaDTO.Minute = narudzbaDb.Vrijeme.Minute;
             narudzbaDTO.Vrijeme = narudzbaDb.Vrijeme.Date.AddHours(narudzbaDb.Vrijeme.Hour).AddMinutes(narudzbaDb.Vrijeme.Minute);
+            narudzbaDTO.VrijemeZavrsetkaZahvata = narudzbaDb.VrijemeZavrsetkaZahvata;
             narudzbaDTO.Opis = narudzbaDb.Opis;
             narudzbaDTO.Dolazak = narudzbaDb.Dolazak;
-
             narudzbaDTO.PacijentID = narudzbaDb.PacijentID;
             narudzbaDTO.ZahvatID = narudzbaDb.ZahvatID;
             narudzbaDTO.PacijentListDTO = FillSelectListItem(db.Pacijent.ToList());

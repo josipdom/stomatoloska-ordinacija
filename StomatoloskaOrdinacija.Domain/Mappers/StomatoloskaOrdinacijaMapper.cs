@@ -36,11 +36,16 @@ namespace StomatoloskaOrdinacija.Domain.Mappers
             return zahvat;
         }
 
-        public Narudzba MapNarudzbaDTOToDb(NarudzbaDTO narudzbaDTO)
+        public Narudzba MapNarudzbaDTOToDb(OrdinacijaDb db, NarudzbaDTO narudzbaDTO)
         {
+            TrajanjeZahvata trajanjeZahvata = GetTrajanjeForZahvatId(db, narudzbaDTO.ZahvatID);
+
             Narudzba narudzba = new Narudzba();
             narudzba.ID = narudzbaDTO.ID;
             narudzba.Vrijeme = narudzbaDTO.Datum.AddHours(narudzbaDTO.Sati).AddMinutes(narudzbaDTO.Minute);
+            narudzba.VrijemeZavrsetkaZahvata = narudzba.Vrijeme
+                .AddHours(trajanjeZahvata.Trajanje.Hour)
+                .AddMinutes(trajanjeZahvata.Trajanje.Minute);
             narudzba.Opis = narudzbaDTO.Opis;
             narudzba.PacijentID = narudzbaDTO.PacijentID;
             narudzba.ZahvatID = narudzbaDTO.ZahvatID;
@@ -75,6 +80,16 @@ namespace StomatoloskaOrdinacija.Domain.Mappers
             trajanjeZahvata.Trajanje = trajanjeZahvataDTO.Trajanje;
 
             return trajanjeZahvata;
+        }
+
+        private TrajanjeZahvata GetTrajanjeForZahvatId(OrdinacijaDb db, int zahvatId)
+        {
+            TrajanjeZahvata t = db.Zahvat
+                .Where(x => x.ID == zahvatId)
+                .Select(x => x.TrajanjeZahvata)
+                .Single();
+
+            return t;
         }
     }
 }
