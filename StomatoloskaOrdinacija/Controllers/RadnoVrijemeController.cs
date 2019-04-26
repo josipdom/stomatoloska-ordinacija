@@ -17,52 +17,8 @@ namespace StomatoloskaOrdinacija.Controllers
         private OrdinacijaDb db = new OrdinacijaDb();
         RadnoVrijemeService service = new RadnoVrijemeService();
 
-        //// GET: RadnoVrijeme
-        //public ActionResult Index()
-        //{
-        //    return View(db.RadnoVrijemeDTOes.ToList());
-        //}
-
-        //// GET: RadnoVrijeme/Details/5
-        //public ActionResult Details(int? id)
-        //{
-        //    if (id == null)
-        //    {
-        //        return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
-        //    }
-        //    RadnoVrijemeDTO radnoVrijemeDTO = db.RadnoVrijemeDTOes.Find(id);
-        //    if (radnoVrijemeDTO == null)
-        //    {
-        //        return HttpNotFound();
-        //    }
-        //    return View(radnoVrijemeDTO);
-        //}
-
-        //// GET: RadnoVrijeme/Create
-        //public ActionResult Create()
-        //{
-        //    return View();
-        //}
-
-        //// POST: RadnoVrijeme/Create
-        //// To protect from overposting attacks, please enable the specific properties you want to bind to, for 
-        //// more details see https://go.microsoft.com/fwlink/?LinkId=317598.
-        //[HttpPost]
-        //[ValidateAntiForgeryToken]
-        //public ActionResult Create([Bind(Include = "ID,VrijemeOd,VrijemeDo")] RadnoVrijemeDTO radnoVrijemeDTO)
-        //{
-        //    if (ModelState.IsValid)
-        //    {
-        //        db.RadnoVrijemeDTOes.Add(radnoVrijemeDTO);
-        //        db.SaveChanges();
-        //        return RedirectToAction("Index");
-        //    }
-
-        //    return View(radnoVrijemeDTO);
-        //}
-
         // GET: RadnoVrijeme/Edit/5
-        public ActionResult Edit(/*int id*/)
+        public ActionResult Uredi(/*int id*/)
         {
             var id = service.GetRadnoVrijemeId();
             if (id == 0)
@@ -82,7 +38,7 @@ namespace StomatoloskaOrdinacija.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "ID,VrijemeOd,VrijemeDo")] RadnoVrijemeDTO radnoVrijemeDTO)
+        public ActionResult Uredi([Bind(Include = "ID,VrijemeOd,VrijemeDo")] RadnoVrijemeDTO radnoVrijemeDTO)
         {
             if (ModelState.IsValid)
             {

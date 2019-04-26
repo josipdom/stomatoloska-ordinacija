@@ -23,9 +23,11 @@ namespace StomatoloskaOrdinacija.Domain.DTOs
         [Required(ErrorMessage = "{0} je obvezno polje")]
         public string Naziv { get; set; }
 
+        [Display(Name = "Cijena u kunama")]
         [Required(ErrorMessage = "{0} je obvezno polje")]
         public int CijenaID { get; set; }
 
+        [Display(Name = "Trajanje")]
         [Required(ErrorMessage = "{0} je obvezno polje")]
         public int TrajanjeID { get; set; }
 

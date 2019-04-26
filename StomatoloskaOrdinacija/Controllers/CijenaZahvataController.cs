@@ -18,14 +18,14 @@ namespace StomatoloskaOrdinacija.Controllers
         CijeneZahvataService service = new CijeneZahvataService();
 
         // GET: CijenaZahvata
-        public ActionResult Index()
+        public ActionResult Popis()
         {
             var res = service.GetPopisCijenaZahvata();
             return View(res);
         }
 
         // GET: CijenaZahvata/Create
-        public ActionResult Create()
+        public ActionResult Izradi()
         {
             return View();
         }
@@ -35,20 +35,20 @@ namespace StomatoloskaOrdinacija.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "ID,Cijena")] CijenaZahvataDTO cijenaZahvataDTO)
+        public ActionResult Izradi([Bind(Include = "ID,Cijena")] CijenaZahvataDTO cijenaZahvataDTO)
         {
             if (ModelState.IsValid)
             {
                 service.CreateNewCijenaZahvata(cijenaZahvataDTO);
 
-                return RedirectToAction("Index");
+                return RedirectToAction("Popis");
             }
 
             return View(cijenaZahvataDTO);
         }
 
         // GET: CijenaZahvata/Edit/5
-        public ActionResult Edit(int id)
+        public ActionResult Uredi(int id)
         {
             if (id == 0)
             {
@@ -67,19 +67,19 @@ namespace StomatoloskaOrdinacija.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "ID,Cijena")] CijenaZahvataDTO cijenaZahvataDTO)
+        public ActionResult Uredi([Bind(Include = "ID,Cijena")] CijenaZahvataDTO cijenaZahvataDTO)
         {
             if (ModelState.IsValid)
             {
                 service.EditCijenaZahvata(cijenaZahvataDTO);
 
-                return RedirectToAction("Index");
+                return RedirectToAction("Popis");
             }
             return View(cijenaZahvataDTO);
         }
 
         // GET: CijenaZahvata/Delete/5
-        public ActionResult Delete(int id)
+        public ActionResult Izbrisi(int id)
         {
             if (id == 0)
             {
@@ -94,7 +94,7 @@ namespace StomatoloskaOrdinacija.Controllers
         }
 
         // POST: CijenaZahvata/Delete/5
-        [HttpPost, ActionName("Delete")]
+        [HttpPost, ActionName("Izbrisi")]
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(int id)
         {
@@ -102,7 +102,7 @@ namespace StomatoloskaOrdinacija.Controllers
 
             service.DeleteCijenaZahvata(cijenaZahvataDTO);
 
-            return RedirectToAction("Index");
+            return RedirectToAction("Popis");
         }
 
         protected override void Dispose(bool disposing)

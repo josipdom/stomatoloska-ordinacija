@@ -1,0 +1,61 @@
+﻿@model IEnumerable<StomatoloskaOrdinacija.Domain.DTOs.NarudzbaDTO>
+
+@{
+    ViewBag.Title = "Popis narudžbi";
+}
+
+<h2>@ViewBag.Title</h2>
+
+<p>
+    @Html.ActionLink("Nova narudžba", "Izradi", null, new { @class = "btn btn-default"})
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Vrijeme)
+        </th>
+        <th>
+            @Html.DisplayName("Vrijeme završetka")
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Opis)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Dolazak)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.PacijentID)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ZahvatID)
+        </th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.Vrijeme)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.VrijemeZavrsetkaZahvata)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Opis)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Dolazak)
+        </td>
+        <td>
+            @Html.DropDownListFor(modelItem => item.PacijentID, item.PacijentListDTO, null, null)
+        </td>
+        <td>
+            @Html.DropDownListFor(modelItem => item.ZahvatID, item.ZahvatListDTO, null, null)
+        </td>
+        <td>
+            @Html.ActionLink("Uredi", "Uredi", new { id = item.ID }, new { @class = "btn btn-default" }) |
+            @Html.ActionLink("Izbriši", "Izbrisi", new { id = item.ID }, new { @class = "btn btn-default" })
+        </td>
+    </tr>
+}
+
+</table>

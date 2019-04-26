@@ -27,40 +27,40 @@ namespace StomatoloskaOrdinacija.Models
 
     public class SetPasswordViewModel
     {
-        [Required]
-        [StringLength(100, ErrorMessage = "The {0} must be at least {2} characters long.", MinimumLength = 6)]
+        [Required(ErrorMessage = "{0} je obvezno polje")]
+        [StringLength(100, ErrorMessage = "{0} mora sadržavati minimalno {2} znakova.", MinimumLength = 6)]
         [DataType(DataType.Password)]
-        [Display(Name = "New password")]
+        [Display(Name = "Nova lozinka")]
         public string NewPassword { get; set; }
 
         [DataType(DataType.Password)]
-        [Display(Name = "Confirm new password")]
-        [Compare("NewPassword", ErrorMessage = "The new password and confirmation password do not match.")]
+        [Display(Name = "Potvrdi novu lozinku")]
+        [Compare("NewPassword", ErrorMessage = "Nova lozinka i potvrdna lozinka se ne podudaraju.")]
         public string ConfirmPassword { get; set; }
     }
 
     public class ChangePasswordViewModel
     {
-        [Required]
+        [Required(ErrorMessage = "{0} je obvezno polje")]
         [DataType(DataType.Password)]
-        [Display(Name = "Current password")]
+        [Display(Name = "Trenutna lozinka")]
         public string OldPassword { get; set; }
 
-        [Required]
-        [StringLength(100, ErrorMessage = "The {0} must be at least {2} characters long.", MinimumLength = 6)]
+        [Required(ErrorMessage = "{0} je obvezno polje")]
+        [StringLength(100, ErrorMessage = "{0} mora sadržavati minimalno {2} znakova.", MinimumLength = 6)]
         [DataType(DataType.Password)]
-        [Display(Name = "New password")]
+        [Display(Name = "Nova lozinka")]
         public string NewPassword { get; set; }
 
         [DataType(DataType.Password)]
-        [Display(Name = "Confirm new password")]
-        [Compare("NewPassword", ErrorMessage = "The new password and confirmation password do not match.")]
+        [Display(Name = "Potvrdi novu lozinku")]
+        [Compare("NewPassword", ErrorMessage = "Nova lozinka i potvrdna lozinka se ne podudaraju.")]
         public string ConfirmPassword { get; set; }
     }
 
     public class AddPhoneNumberViewModel
     {
-        [Required]
+        [Required(ErrorMessage = "{0} je obvezno polje")]
         [Phone]
         [Display(Name = "Phone Number")]
         public string Number { get; set; }
@@ -68,11 +68,11 @@ namespace StomatoloskaOrdinacija.Models
 
     public class VerifyPhoneNumberViewModel
     {
-        [Required]
+        [Required(ErrorMessage = "{0} je obvezno polje")]
         [Display(Name = "Code")]
         public string Code { get; set; }
 
-        [Required]
+        [Required(ErrorMessage = "{0} je obvezno polje")]
         [Phone]
         [Display(Name = "Phone Number")]
         public string PhoneNumber { get; set; }

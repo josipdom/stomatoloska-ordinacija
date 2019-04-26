@@ -27,14 +27,20 @@ namespace StomatoloskaOrdinacija.Domain.DTOs
         [Range(0, 59, ErrorMessage = "Minute moraju biti u rasponu od 0 do 59")]
         public int Minute { get; set; }
 
+        [DisplayFormat(ApplyFormatInEditMode = true, DataFormatString = "{0:dd.MM.yyyy}")]
+        [DataType(DataType.Date)]
         public DateTime Vrijeme { get; set; }
 
         [Required(ErrorMessage = "Opis je obvezno polje")]
         [StringLength(250)]
         public string Opis { get; set; }
 
+        [Required(ErrorMessage = "Pacijen je obvezno polje")]
+        [Display(Name = "Pacijent")]
         public int PacijentID { get; set; }
 
+        [Required(ErrorMessage = "Zahvat je obvezno polje")]
+        [Display(Name = "Zahvat")]
         public int ZahvatID { get; set; }
 
         public bool Dolazak { get; set; }

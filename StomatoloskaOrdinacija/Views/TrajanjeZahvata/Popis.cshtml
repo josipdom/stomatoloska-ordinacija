@@ -1,13 +1,13 @@
 ﻿@model IEnumerable<StomatoloskaOrdinacija.Domain.DTOs.TrajanjeZahvataDTO>
 
 @{
-    ViewBag.Title = "Index";
+    ViewBag.Title = "Popis trajanja zahvata";
 }
 
-<h2>Index</h2>
+<h2>@ViewBag.Title</h2>
 
 <p>
-    @Html.ActionLink("Create New", "Create")
+    @Html.ActionLink("Novo trajanje zahvata", "Izradi", null, new { @class = "btn btn-default" })
 </p>
 <table class="table">
     <tr>
@@ -23,8 +23,8 @@
             @Html.DisplayFor(modelItem => item.Trajanje)
         </td>
         <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.ID }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.ID })
+            @Html.ActionLink("Uredi", "Uredi", new { id=item.ID }, new { @class = "btn btn-default" }) |
+            @Html.ActionLink("Izbriši", "Izbriši", new { id=item.ID }, new { @class = "btn btn-default" })
         </td>
     </tr>
 }

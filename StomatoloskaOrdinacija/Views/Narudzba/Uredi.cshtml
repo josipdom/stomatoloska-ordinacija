@@ -1,10 +1,10 @@
 ﻿@model StomatoloskaOrdinacija.Domain.DTOs.NarudzbaDTO
 
 @{
-    ViewBag.Title = "Edit";
+    ViewBag.Title = "Uredi narudžbu";
 }
 
-<h2>Edit</h2>
+<h2>@ViewBag.Title</h2>
 
 
 @using (Html.BeginForm())
@@ -12,7 +12,6 @@
     @Html.AntiForgeryToken()
     
 <div class="form-horizontal">
-    <h4>NarudzbaDTO</h4>
     <hr />
     @Html.ValidationSummary(true, "", new { @class = "text-danger" })
     @Html.HiddenFor(model => model.ID)
@@ -50,7 +49,7 @@
     </div>
 
     <div class="form-group">
-        @Html.LabelFor(model => model.PacijentID, "PacijentID", htmlAttributes: new { @class = "control-label col-md-2" })
+        @Html.LabelFor(model => model.PacijentID, "Pacijent", htmlAttributes: new { @class = "control-label col-md-2" })
         <div class="col-md-10">
             @Html.DropDownListFor(model => model.PacijentID, Model.PacijentListDTO, "- Odaberite pacijenta -", new { @class = "btn btn-default" })
             @Html.ValidationMessageFor(model => model.PacijentID, "", new { @class = "text-danger" })
@@ -58,7 +57,7 @@
     </div>
 
     <div class="form-group">
-        @Html.LabelFor(model => model.ZahvatID, "ZahvatID", htmlAttributes: new { @class = "control-label col-md-2" })
+        @Html.LabelFor(model => model.ZahvatID, "Zahvat", htmlAttributes: new { @class = "control-label col-md-2" })
         <div class="col-md-10">
             @Html.DropDownListFor(model => model.ZahvatID, Model.ZahvatListDTO, "- Odaberite zahvat -", new { @class = "btn btn-default" })
             @Html.ValidationMessageFor(model => model.ZahvatID, "", new { @class = "text-danger" })
@@ -77,14 +76,14 @@
 
     <div class="form-group">
         <div class="col-md-offset-2 col-md-10">
-            <input type="submit" value="Save" class="btn btn-default" />
+            <input type="submit" value="Spremi" class="btn btn-default" />
         </div>
     </div>
 </div>
 }
 
 <div>
-    @Html.ActionLink("Back to List", "Index")
+    @Html.ActionLink("Povratak na popis", "Popis", null, new { @class = "btn btn-default"})
 </div>
 
 @section Scripts {

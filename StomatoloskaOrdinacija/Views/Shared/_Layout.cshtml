@@ -3,7 +3,7 @@
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>@ViewBag.Title - My ASP.NET Application</title>
+    <title>@ViewBag.Title - Stomatološka ordinacija</title>
     @Styles.Render("~/Content/css")
     @Scripts.Render("~/bundles/modernizr")
     @Styles.Render("~/Content/ej/web/flat-lime/ej.web.all.min.css")
@@ -29,10 +29,10 @@
                 </div>
                 <div class="navbar-collapse collapse">
                     <ul class="nav navbar-nav">
-                        <li>@Html.ActionLink("Pacijenti", "Index", "Pacijenti")</li>
-                        <li>@Html.ActionLink("Zahvati", "Index", "Zahvati")</li>
-                        <li>@Html.ActionLink("Narudžbe", "Index", "Narudzba")</li>
-                        <li>@Html.ActionLink("Radno vrijeme", "Edit", "RadnoVrijeme")</li>
+                        <li>@Html.ActionLink("Pacijenti", "Popis", "Pacijenti")</li>
+                        <li>@Html.ActionLink("Zahvati", "Popis", "Zahvati")</li>
+                        <li>@Html.ActionLink("Narudžbe", "Popis", "Narudzba")</li>
+                        <li>@Html.ActionLink("Radno vrijeme", "Uredi", "RadnoVrijeme")</li>
                     </ul>
                     @Html.Partial("_LoginPartial")
                 </div>
@@ -43,7 +43,7 @@
             @RenderBody()
             <hr />
             <footer>
-                <p>&copy; @DateTime.Now.Year - My ASP.NET Application</p>
+                <p>&copy; @DateTime.Now.Year - Stomatološka ordinacija</p>
             </footer>
         </div>
         @Html.EJ().ScriptManager()

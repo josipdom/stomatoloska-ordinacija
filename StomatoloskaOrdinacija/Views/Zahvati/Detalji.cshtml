@@ -1,13 +1,13 @@
 ﻿@model StomatoloskaOrdinacija.Domain.DTOs.ZahvatDTO
 
 @{
-    ViewBag.Title = "Details";
+    ViewBag.Title = "Detalji";
 }
 
-<h2>Details</h2>
+<h2>@ViewBag.Title</h2>
 
 <div>
-    <h4>ZahvatDTO</h4>
+    <h4>Zahvat</h4>
     <hr />
     <dl class="dl-horizontal">
         <dt>
@@ -45,6 +45,6 @@
     </dl>
 </div>
 <p>
-    @Html.ActionLink("Edit", "Edit", new { id = Model.ID }) |
-    @Html.ActionLink("Back to List", "Index")
+    @Html.ActionLink("Uredi", "Uredi", new { id = Model.ID }, new { @class = "btn btn-default"}) |
+    @Html.ActionLink("Povratak na popis", "Popis", null, new { @class = "btn btn-default" })
 </p>

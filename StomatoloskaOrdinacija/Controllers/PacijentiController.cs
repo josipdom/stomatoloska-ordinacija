@@ -18,14 +18,14 @@ namespace StomatoloskaOrdinacija.Controllers
         PacijentiService service = new PacijentiService();
 
         // GET: Pacijenti
-        public ActionResult Index()
+        public ActionResult Popis()
         {
             var res = service.GetPopisPacijenata();
             return View(res);
         }
 
         // GET: Pacijenti/Details/5
-        public ActionResult Details(int id)
+        public ActionResult Detalji(int id)
         {
             if (id == 0)
             {
@@ -43,7 +43,7 @@ namespace StomatoloskaOrdinacija.Controllers
         }
 
         // GET: Pacijenti/Create
-        public ActionResult Create()
+        public ActionResult Izradi()
         {
             return View();
         }
@@ -53,20 +53,20 @@ namespace StomatoloskaOrdinacija.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "ID,Ime,Prezime,DatumRodjenja,Telefon,Adresa")] PacijentDTO pacijentDTO)
+        public ActionResult Izradi([Bind(Include = "ID,Ime,Prezime,DatumRodjenja,Telefon,Adresa")] PacijentDTO pacijentDTO)
         {
             if (ModelState.IsValid)
             {
                 service.CreateNewPacijent(pacijentDTO);
 
-                return RedirectToAction("Index");
+                return RedirectToAction("Popis");
             }
 
             return View(pacijentDTO);
         }
 
         // GET: Pacijenti/Edit/5
-        public ActionResult Edit(int id)
+        public ActionResult Uredi(int id)
         {
             if (id == 0)
             {
@@ -87,20 +87,20 @@ namespace StomatoloskaOrdinacija.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "ID,Ime,Prezime,DatumRodjenja,Telefon,Adresa")] PacijentDTO pacijentDTO)
+        public ActionResult Uredi([Bind(Include = "ID,Ime,Prezime,DatumRodjenja,Telefon,Adresa")] PacijentDTO pacijentDTO)
         {
             if (ModelState.IsValid)
             {
 
                 service.EditPacijent(pacijentDTO);
 
-                return RedirectToAction("Index");
+                return RedirectToAction("Popis");
             }
             return View(pacijentDTO);
         }
 
         // GET: Pacijenti/Delete/5
-        public ActionResult Delete(int id)
+        public ActionResult Izbrisi(int id)
         {
             if (id == 0)
             {
@@ -115,7 +115,7 @@ namespace StomatoloskaOrdinacija.Controllers
         }
 
         // POST: Pacijenti/Delete/5
-        [HttpPost, ActionName("Delete")]
+        [HttpPost, ActionName("Izbrisi")]
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(int id)
         {
@@ -123,7 +123,7 @@ namespace StomatoloskaOrdinacija.Controllers
 
             service.DeletePacijent(pacijentDTO);
 
-            return RedirectToAction("Index");
+            return RedirectToAction("Popis");
         }
 
         protected override void Dispose(bool disposing)

@@ -1,13 +1,13 @@
 ﻿@model StomatoloskaOrdinacija.Models.IndexViewModel
 @{
-    ViewBag.Title = "Manage";
+    ViewBag.Title = "Postavke";
 }
 
-<h2>@ViewBag.Title.</h2>
+<h2>@ViewBag.Title</h2>
 
 <p class="text-success">@ViewBag.StatusMessage</p>
 <div>
-    <h4>Change your account settings</h4>
+    <h4>Promjena postavki računa</h4>
     <hr />
     @if (Model.HasPassword)
     {
@@ -15,6 +15,6 @@
     }
     else
     {
-        @Html.ActionLink("Create", "SetPassword")
+        @Html.ActionLink("Izradi", "SetPassword", null, new { @class = "btn btn-default" })
     }
 </div>

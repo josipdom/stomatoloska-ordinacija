@@ -1,13 +1,13 @@
 ﻿@model IEnumerable<StomatoloskaOrdinacija.Domain.DTOs.CijenaZahvataDTO>
 
 @{
-    ViewBag.Title = "Index";
+    ViewBag.Title = "Popis cijena zahvata";
 }
 
-<h2>Index</h2>
+<h2>@ViewBag.Title</h2>
 
 <p>
-    @Html.ActionLink("Create New", "Create")
+    @Html.ActionLink("Nova cijena zahvata", "Izradi", null, new { @class = "btn btn-default" })
 </p>
 <table class="table">
     <tr>
@@ -23,8 +23,8 @@
             @Html.DisplayFor(modelItem => item.Cijena)
         </td>
         <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.ID }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.ID })
+            @Html.ActionLink("Uredi", "Uredi", new { id=item.ID }, new { @class = "btn btn-default" }) |
+            @Html.ActionLink("Izbriši", "Izbrisi", new { id=item.ID }, new { @class = "btn btn-default" })
         </td>
     </tr>
 }

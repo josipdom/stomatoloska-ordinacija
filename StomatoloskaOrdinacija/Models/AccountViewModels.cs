@@ -33,7 +33,7 @@ namespace StomatoloskaOrdinacija.Models
         public string Code { get; set; }
         public string ReturnUrl { get; set; }
 
-        [Display(Name = "Remember this browser?")]
+        [Display(Name = "Zapamti ovaj preglednik?")]
         public bool RememberBrowser { get; set; }
 
         public bool RememberMe { get; set; }
@@ -48,55 +48,55 @@ namespace StomatoloskaOrdinacija.Models
 
     public class LoginViewModel
     {
-        [Required]
+        [Required(ErrorMessage = "{0} je obvezno polje")]
         [Display(Name = "Email")]
         [EmailAddress]
         public string Email { get; set; }
 
-        [Required]
+        [Required(ErrorMessage = "{0} je obvezno polje")]
         [DataType(DataType.Password)]
-        [Display(Name = "Password")]
+        [Display(Name = "Lozinka")]
         public string Password { get; set; }
 
-        [Display(Name = "Remember me?")]
+        [Display(Name = "Zapamti me?")]
         public bool RememberMe { get; set; }
     }
 
     public class RegisterViewModel
     {
-        [Required]
+        [Required(ErrorMessage = "{0} je obvezno polje")]
         [EmailAddress]
         [Display(Name = "Email")]
         public string Email { get; set; }
 
-        [Required]
-        [StringLength(100, ErrorMessage = "The {0} must be at least {2} characters long.", MinimumLength = 6)]
+        [Required(ErrorMessage = "{0} je obvezno polje")]
+        [StringLength(100, ErrorMessage = "{0} mora sadržavati minimalno {2} znakova.", MinimumLength = 6)]
         [DataType(DataType.Password)]
-        [Display(Name = "Password")]
+        [Display(Name = "Lozinka")]
         public string Password { get; set; }
 
         [DataType(DataType.Password)]
-        [Display(Name = "Confirm password")]
-        [Compare("Password", ErrorMessage = "The password and confirmation password do not match.")]
+        [Display(Name = "Potvrdi lozinku")]
+        [Compare("Password", ErrorMessage = "Unesena lozinka i potvrdna lozinka se ne podudaraju.")]
         public string ConfirmPassword { get; set; }
     }
 
     public class ResetPasswordViewModel
     {
-        [Required]
+        [Required(ErrorMessage = "{0} je obvezno polje")]
         [EmailAddress]
         [Display(Name = "Email")]
         public string Email { get; set; }
 
-        [Required]
-        [StringLength(100, ErrorMessage = "The {0} must be at least {2} characters long.", MinimumLength = 6)]
+        [Required(ErrorMessage = "{0} je obvezno polje")]
+        [StringLength(100, ErrorMessage = "{0} mora sadržavati minimalno {2} znakova.", MinimumLength = 6)]
         [DataType(DataType.Password)]
-        [Display(Name = "Password")]
+        [Display(Name = "Lozinka")]
         public string Password { get; set; }
 
         [DataType(DataType.Password)]
-        [Display(Name = "Confirm password")]
-        [Compare("Password", ErrorMessage = "The password and confirmation password do not match.")]
+        [Display(Name = "Potvrdi lozinku")]
+        [Compare("Password", ErrorMessage = "Unesena lozinka i potvrdna lozinka se ne podudaraju")]
         public string ConfirmPassword { get; set; }
 
         public string Code { get; set; }
@@ -104,7 +104,7 @@ namespace StomatoloskaOrdinacija.Models
 
     public class ForgotPasswordViewModel
     {
-        [Required]
+        [Required(ErrorMessage = "{0} je obvezno polje")]
         [EmailAddress]
         [Display(Name = "Email")]
         public string Email { get; set; }
