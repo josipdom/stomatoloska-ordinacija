@@ -13,15 +13,12 @@
     var vrijemeDo = Model.RadnoVrijemeDTO.VrijemeDo;
 }
 
-@{
+@{int counter = 0;
     foreach (var item in Model.NarudzbaDTOList)
     {
+        counter++;
         if (item.Dolazak == true)
         {
-        int counter=0;
-
-            counter++;
-            
             <style>
                 #Appointment_@counter {
                     background: linear-gradient(to bottom,#95a5a6 0%,#95a5a6 100%) !important;
@@ -33,6 +30,8 @@
 
 <h2>Kalendar narudžbi</h2>
 <hr />
+@Html.ActionLink("Nova narudžba", "Izradi", "Narudzba", null, new { @class="btn btn-default"})
+<br /><br />
 @(Html.EJ().Schedule("Schedule1")
                     .Width("100%")
                     .Height("525px")
