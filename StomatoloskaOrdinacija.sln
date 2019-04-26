@@ -9,6 +9,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "StomatoloskaOrdinacija.Doma
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "StomatoloskaOrdinacija.DAL", "StomatoloskaOrdinacija.DAL\StomatoloskaOrdinacija.DAL.csproj", "{D5F63186-E99F-4D4A-A655-C6402F1A4C5B}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "StomatoloskaOrdinacija.Reports", "StomatoloskaOrdinacija.Reports\StomatoloskaOrdinacija.Reports.csproj", "{0F324DFA-B845-46FB-AD50-3712F359528A}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -27,6 +29,10 @@ Global
 		{D5F63186-E99F-4D4A-A655-C6402F1A4C5B}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{D5F63186-E99F-4D4A-A655-C6402F1A4C5B}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{D5F63186-E99F-4D4A-A655-C6402F1A4C5B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{0F324DFA-B845-46FB-AD50-3712F359528A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0F324DFA-B845-46FB-AD50-3712F359528A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0F324DFA-B845-46FB-AD50-3712F359528A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0F324DFA-B845-46FB-AD50-3712F359528A}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

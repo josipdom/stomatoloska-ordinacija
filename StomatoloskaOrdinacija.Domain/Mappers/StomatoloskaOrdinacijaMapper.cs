@@ -1,6 +1,5 @@
 ﻿using StomatoloskaOrdinacija.DAL;
 using StomatoloskaOrdinacija.Domain.DTOs;
-using StomatoloskaOrdinacija.Domain.Enums;
 using System;
 using System.Collections.Generic;
 using System.Linq;
